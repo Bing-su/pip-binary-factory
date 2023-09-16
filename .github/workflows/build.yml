@@ -1,0 +1,32 @@
+name: Build
+
+on:
+  - workflow_dispatch
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - uses: actions/setup-go@v4
+        with:
+          go-version: "stable"
+
+      - run: pip install build[virtualenv] wheel
+      - run: python build_wheel.py
+      - run: python -m build -s
+
+      - run: |
+          pip install --no-index -f dist/ micro-editor
+          which micro
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: dist

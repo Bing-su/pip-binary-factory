@@ -6,6 +6,8 @@ dependencies = []
 requires-python = ">=3.8"
 readme = "README.md"
 license = { text = "MIT" }
+keywords = ["micro", "text editor"]
+classifiers = ["Programming Language :: Python :: 3", "Topic :: Text Editors"]
 
 dynamic = ["version"]
 
