@@ -1,4 +1,4 @@
-name: Build
+name: Build micro
 
 on:
   - workflow_dispatch
@@ -10,8 +10,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: true
+      - run: git submodule init -- micro/micro && git submodule update -- micro/micro
       - uses: actions/setup-python@v4
         with:
           python-version: "3.x"
@@ -21,12 +20,14 @@ jobs:
 
       - run: pip install build[virtualenv] wheel
       - run: python build_wheel.py
+        working-directory: ./micro
       - run: python -m build -s
+        working-directory: ./micro
 
       - run: |
-          pip install --no-index -f dist/ micro-editor
+          pip install --no-index -f micro/dist/ micro-editor
           which micro
 
       - uses: actions/upload-artifact@v3
         with:
-          path: dist
+          path: micro/dist

@@ -1,0 +1,3 @@
+[submodule "micro/micro"]
+	path = micro/micro
+	url = https://github.com/zyedidia/micro
