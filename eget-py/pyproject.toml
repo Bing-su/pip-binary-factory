@@ -1,0 +1,49 @@
+[project]
+name = "eget-py"
+description = "zyedidia/eget wrapper for python"
+readme = "README.md"
+requires-python = ">=3.8"
+
+dynamic = ["version"]
+
+[project.urls]
+repository = "https://github.com/Bing-su/pip-binary-factory"
+
+[project.scripts]
+eget = "eget.__main__:main"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm.version]
+source = "file"
+path = "eget/__init__.py"
+
+[tool.pdm.build]
+is-purelib = false
+source-includes = ["eget-go/"]
+
+[tool.ruff]
+select = [
+    "A",
+    "B",
+    "C4",
+    "C90",
+    "E",
+    "EM",
+    "F",
+    "FA",
+    "I001",
+    "ISC",
+    "N",
+    "PIE",
+    "PT",
+    "RET",
+    "RUF",
+    "SIM",
+    "UP",
+    "W",
+]
+ignore = ["B008", "B905", "E501"]
+unfixable = ["F401"]

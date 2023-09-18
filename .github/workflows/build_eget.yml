@@ -1,0 +1,33 @@
+name: Build eget
+
+on:
+  - workflow_dispatch
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: git submodule init -- eget-py/eget-go && git submodule update -- eget-py/eget-go
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - uses: actions/setup-go@v4
+        with:
+          go-version: "stable"
+
+      - run: pip install build[virtualenv] wheel
+      - run: python build_wheel.py
+        working-directory: ./eget-py
+      - run: python -m build -s
+        working-directory: ./eget-py
+
+      - run: |
+          pip install --no-index -f eget-py/dist/ eget-py
+          eget --version
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: eget-py/dist
