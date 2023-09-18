@@ -1,11 +1,6 @@
-# micro-py
+# pip binary factory
 
-**micro** is a terminal-based text editor. see original [repository](https://github.com/zyedidia/micro) for more information.
+나에게 남은 것이 파이썬 뿐이라면, 파이썬에 세상을 담겠다.
 
-This is a python wrapper that can be installed with pip.
-
-## install
-
-```sh
-pip install micro-editor
-```
+- micro: https://github.com/zyedidia/micro
+- eget: https://github.com/zyedidia/eget
