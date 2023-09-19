@@ -1,0 +1,33 @@
+name: Build lazygit
+
+on:
+  - workflow_dispatch
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: git submodule init -- lazygit/lazygit && git submodule update -- lazygit/lazygit
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - uses: actions/setup-go@v4
+        with:
+          go-version: "stable"
+
+      - run: pip install build[virtualenv] wheel
+      - run: python build_wheel.py
+        working-directory: ./lazygit
+      - run: python -m build -s
+        working-directory: ./lazygit
+
+      - run: |
+          pip install --no-index -f lazygit/dist/ lazygit-py
+          which lazygit
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: lazygit/dist
