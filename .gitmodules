@@ -4,3 +4,6 @@
 [submodule "eget-py/eget-go"]
 	path = eget-py/eget-go
 	url = https://github.com/zyedidia/eget
+[submodule "lazygit/lazygit"]
+	path = lazygit/lazygit
+	url = https://github.com/jesseduffield/lazygit
