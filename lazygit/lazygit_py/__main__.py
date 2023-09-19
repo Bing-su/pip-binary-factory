@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 def main():
-    binary = Path(__file__).parent.joinpath("micro")
+    binary = Path(__file__).parent.joinpath("lazygit")
     if sys.platform == "win32":
         binary = binary.with_suffix(".exe")
     out = subprocess.run([str(binary)])

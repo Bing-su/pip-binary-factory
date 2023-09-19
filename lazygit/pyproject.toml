@@ -15,7 +15,7 @@ classifiers = [
 dynamic = ["version"]
 
 [project.scripts]
-micro = "lazygit_py.__main__:main"
+lazygit = "lazygit_py.__main__:main"
 
 [project.urls]
 repository = "https://github.com/Bing-su/pip-binary-factory"
