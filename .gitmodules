@@ -7,3 +7,6 @@
 [submodule "lazygit/lazygit"]
 	path = lazygit/lazygit
 	url = https://github.com/jesseduffield/lazygit
+[submodule "fzf/fzf"]
+	path = fzf/fzf
+	url = https://github.com/junegunn/fzf
