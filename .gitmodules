@@ -7,3 +7,6 @@
 [submodule "fzf/fzf"]
 	path = fzf/fzf
 	url = https://github.com/junegunn/fzf
+[submodule "eget-py/eget"]
+	path = eget-py/eget
+	url = https://github.com/zyedidia/eget
