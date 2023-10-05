@@ -1,28 +1,30 @@
 [project]
 name = "eget-py"
 description = "zyedidia/eget wrapper for python"
+version = "1.3.3.post1"
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 readme = "README.md"
 requires-python = ">=3.8"
-
-dynamic = ["version"]
+keywords = ["eget", "github"]
+classifiers = [
+    "Programming Language :: Other",
+    "Topic :: System :: Installation/Setup",
+]
 
 [project.urls]
 repository = "https://github.com/Bing-su/pip-binary-factory"
-
-[project.scripts]
-eget = "eget.__main__:main"
 
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
-[tool.pdm.version]
-source = "file"
-path = "eget/__init__.py"
-
 [tool.pdm.build]
 is-purelib = false
-source-includes = ["eget-go/"]
+source-includes = ["eget/"]
+excludes = ["bin/*", ".gitignore"]
+
+[tool.pdm.build.wheel-data]
+scripts = ["${BUILD_DIR}/bin/*"]
 
 [tool.ruff]
 select = [
