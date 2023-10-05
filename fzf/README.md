@@ -1,4 +1,4 @@
-# fzf-py
+# fzf-bin
 
 https://github.com/junegunn/fzf
 
@@ -13,5 +13,5 @@ This is a python wrapper that can be installed with pip.
 ## install
 
 ```sh
-pip install fzf-py
+pip install fzf-bin
 ```
