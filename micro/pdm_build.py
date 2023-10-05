@@ -15,24 +15,25 @@ def is_windows():
 
 
 def build(output: str) -> None:
-    go = shutil.which("go")
-    if go is None:
+    if shutil.which("go") is None:
         msg = "golang is required and 'go' should be in $PATH"
         raise RuntimeError(msg)
 
-    args = [
-        go,
-        "build",
-        "-o",
-        output,
-        "-trimpath",
-        "-ldflags",
-        f"-s -w -X main.Version={VERSION}",
-        ".",
-    ]
+    make = shutil.which("make")
+    if make is None:
+        msg = "make is required and 'make' should be in $PATH"
+        raise RuntimeError(msg)
 
+    args = [make, "build"]
     submodule = Path(__file__).parent.joinpath(NAME)
     subprocess.run(args, check=True, cwd=submodule)
+
+    binary = submodule.joinpath(NAME)
+    if is_windows():
+        binary = binary.with_suffix(".exe")
+
+    Path(output).parent.mkdir(exist_ok=True, parents=True)
+    shutil.move(binary, Path(output).parent)
     Path(output).chmod(0o777)
 
 
