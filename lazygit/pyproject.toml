@@ -1,6 +1,7 @@
 [project]
 name = "lazygit-py"
 description = "lazygit - simple terminal UI for git commands"
+version = "0.40.2"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.8"
@@ -12,11 +13,6 @@ classifiers = [
     "Topic :: Software Development :: Version Control :: Git",
 ]
 
-dynamic = ["version"]
-
-[project.scripts]
-lazygit = "lazygit_py.__main__:main"
-
 [project.urls]
 repository = "https://github.com/Bing-su/pip-binary-factory"
 
@@ -24,13 +20,13 @@ repository = "https://github.com/Bing-su/pip-binary-factory"
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
-[tool.pdm.version]
-source = "file"
-path = "lazygit_py/__init__.py"
-
 [tool.pdm.build]
 is-purelib = false
 source-includes = ["lazygit/"]
+excludes = ["bin/*", ".gitignore"]
+
+[tool.pdm.build.wheel-data]
+scripts = ["${BUILD_DIR}/bin/*"]
 
 [tool.ruff]
 select = [

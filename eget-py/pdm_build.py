@@ -33,6 +33,7 @@ def build(output: str) -> None:
 
     submodule = Path(__file__).parent.joinpath(NAME)
     subprocess.run(args, check=True, cwd=submodule)
+    Path(output).chmod(0o777)
 
 
 def pdm_build_hook_enabled(context):

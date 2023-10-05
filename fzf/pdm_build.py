@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 
 NAME = "fzf"
+VERSION = "0.42.0"
 
 
 def is_windows():
@@ -19,16 +20,19 @@ def build(output: str) -> None:
         msg = "golang is required and 'go' should be in $PATH"
         raise RuntimeError(msg)
 
-    args = [go, "build", "-trimpath", "-ldflags", "-s -w", "."]
+    args = [
+        go,
+        "build",
+        "-o",
+        output,
+        "-trimpath",
+        "-ldflags",
+        f"-s -w -X main.Version={VERSION}",
+        ".",
+    ]
 
     submodule = Path(__file__).parent.joinpath(NAME)
     subprocess.run(args, check=True, cwd=submodule)
-    binary = submodule.joinpath(NAME)
-    if is_windows():
-        binary = binary.with_suffix(".exe")
-
-    Path(output).parent.mkdir(exist_ok=True, parents=True)
-    shutil.move(binary, Path(output).parent)
     Path(output).chmod(0o777)
 
 

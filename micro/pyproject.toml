@@ -1,6 +1,7 @@
 [project]
 name = "micro-editor"
 description = "python wrapper for terminal-based text editor 'micro'"
+version = "2.0.12"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.8"
@@ -9,22 +10,17 @@ license = { text = "MIT" }
 keywords = ["micro", "text editor"]
 classifiers = ["Programming Language :: Python :: 3", "Topic :: Text Editors"]
 
-dynamic = ["version"]
-
-[project.scripts]
-micro = "micro_editor.__main__:main"
-
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
-[tool.pdm.version]
-source = "file"
-path = "micro_editor/__init__.py"
-
 [tool.pdm.build]
 is-purelib = false
 source-includes = ["micro/"]
+excludes = ["bin/*", ".gitignore"]
+
+[tool.pdm.build.wheel-data]
+scripts = ["${BUILD_DIR}/bin/*"]
 
 [tool.ruff]
 select = [
