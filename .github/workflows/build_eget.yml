@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: git submodule init -- eget-py/eget-go && git submodule update -- eget-py/eget-go
+      - run: git submodule init -- eget/eget && git submodule update -- eget/eget
       - uses: actions/setup-python@v4
         with:
           python-version: "3.x"
@@ -20,14 +20,14 @@ jobs:
 
       - run: pip install build[virtualenv] wheel
       - run: python build_wheel.py
-        working-directory: ./eget-py
+        working-directory: ./eget
       - run: python -m build -s
-        working-directory: ./eget-py
+        working-directory: ./eget
 
       - run: |
-          pip install --no-index -f eget-py/dist/ eget-py
+          pip install --no-index -f eget/dist/ eget-py
           eget --version
 
       - uses: actions/upload-artifact@v3
         with:
-          path: eget-py/dist
+          path: eget/dist
