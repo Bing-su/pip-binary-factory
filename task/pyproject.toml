@@ -1,0 +1,65 @@
+[project]
+name = "go-task-bin"
+description = "task - A task runner / simpler Make alternative written in Go"
+version = "3.30.1"
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
+dependencies = []
+requires-python = ">=3.8"
+readme = "README.md"
+license = { text = "MIT" }
+keywords = [
+    "build",
+    "build-tool",
+    "devops",
+    "go",
+    "make",
+    "makefile",
+    "runner",
+    "task",
+    "task-runner",
+    "taskfile",
+    "tool",
+]
+classifiers = [
+    "Programming Language :: Other",
+    "Topic :: Software Development :: Build Tools",
+]
+
+[project.urls]
+repository = "https://github.com/Bing-su/pip-binary-factory"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm.build]
+is-purelib = false
+source-includes = ["task/"]
+excludes = ["bin/*", ".gitignore"]
+
+[tool.pdm.build.wheel-data]
+scripts = ["${BUILD_DIR}/bin/*"]
+
+[tool.ruff]
+select = [
+    "A",
+    "B",
+    "C4",
+    "C90",
+    "E",
+    "EM",
+    "F",
+    "FA",
+    "I001",
+    "ISC",
+    "N",
+    "PIE",
+    "PT",
+    "RET",
+    "RUF",
+    "SIM",
+    "UP",
+    "W",
+]
+ignore = ["B008", "B905", "E501"]
+unfixable = ["F401"]

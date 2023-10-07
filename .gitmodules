@@ -10,3 +10,6 @@
 [submodule "eget/eget"]
 	path = eget/eget
 	url = https://github.com/zyedidia/eget
+[submodule "task/task"]
+	path = task/task
+	url = https://github.com/go-task/task
