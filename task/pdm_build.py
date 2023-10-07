@@ -27,7 +27,7 @@ def build(output: str) -> None:
         output,
         "-trimpath",
         "-ldflags",
-        "-s -w",
+        f"-s -w -X main.Version={VERSION}",
         "./cmd/task",
     ]
 
