@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: git submodule init -- micro/micro && git submodule update -- micro/micro
+      - run: git submodule update --init -- micro/micro
       - uses: actions/setup-python@v4
         with:
           python-version: "3.x"
@@ -28,7 +28,7 @@ jobs:
 
       - run: |
           pip install --no-index -f micro/dist/ micro-editor
-          which micro
+          micro -version
 
       - uses: actions/upload-artifact@v3
         with:

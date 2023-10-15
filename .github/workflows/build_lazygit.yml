@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: git submodule init -- lazygit/lazygit && git submodule update -- lazygit/lazygit
+      - run: git submodule update --init -- lazygit/lazygit
       - uses: actions/setup-python@v4
         with:
           python-version: "3.x"

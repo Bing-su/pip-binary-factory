@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: git submodule init -- task/task && git submodule update -- task/task
+      - run: git submodule update --init -- task/task
       - uses: actions/setup-python@v4
         with:
           python-version: "3.x"
