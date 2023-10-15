@@ -6,3 +6,4 @@ binary package with pip install
 - eget: https://github.com/zyedidia/eget
 - lazygit: https://github.com/jesseduffield/lazygit
 - fzf: https://github.com/junegunn/fzf
+- task: https://taskfile.dev

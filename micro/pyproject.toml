@@ -10,6 +10,9 @@ license = { text = "MIT" }
 keywords = ["micro", "text editor"]
 classifiers = ["Programming Language :: Python :: 3", "Topic :: Text Editors"]
 
+[project.urls]
+repository = "https://github.com/Bing-su/pip-binary-factory"
+
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
