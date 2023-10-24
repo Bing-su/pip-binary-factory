@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 NAME = "micro"
-VERSION = "2.0.12"
+VERSION = "2.0.13"
 
 
 def is_windows():
