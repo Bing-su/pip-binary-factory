@@ -7,8 +7,6 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -36,7 +34,24 @@ jobs:
 
       - run: ls micro/dist
 
+
+  publish:
+    name: publish
+    runs-on: ubuntu-latest
+    needs: [build]
+    environment: publish
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: artifact
+          path: dist
+
+      - run: ls -R dist
+
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          packages-dir: micro/dist
+          packages-dir: dist
