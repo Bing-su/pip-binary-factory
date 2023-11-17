@@ -1,7 +1,7 @@
 [project]
 name = "fzf-bin"
 description = "fzf - 🌸 A command-line fuzzy finder"
-version = "0.44.0"
+version = "0.44.1"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.8"
