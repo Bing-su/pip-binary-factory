@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 NAME = "fzf"
-VERSION = "0.45.0"
+VERSION = "0.46.0"
 
 
 def is_windows():
