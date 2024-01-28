@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 NAME = "task"
-VERSION = "3.33.1"
+VERSION = "3.34.1"
 
 
 def is_windows():
