@@ -60,7 +60,7 @@ def get_platform():
     return f"{arch}-{platform.system().lower()}"
 
 
-def download(output: str) -> None:
+def download(build_dir: Path) -> None:
     info = requests.get(ZIG_VERSION_INFO_URL).json()[VERSION]
     platform = get_platform()
     if platform not in info:
@@ -68,7 +68,6 @@ def download(output: str) -> None:
         raise RuntimeError(message)
 
     tarball_url = info[platform]["tarball"]
-    Path(output).mkdir(parents=True, exist_ok=True)
 
     with TemporaryDirectory() as tmp:
         tarball = Path(tmp).joinpath(Path(tarball_url).name)
@@ -76,15 +75,21 @@ def download(output: str) -> None:
             r.raise_for_status()
             with tarball.open("wb") as f:
                 shutil.copyfileobj(r.raw, f)
-        shutil.unpack_archive(tarball, Path(tmp))
+        shutil.unpack_archive(tarball, tmp)
 
-        for file in Path(tmp).rglob("zig*"):
-            if file.name in ("zig", "zig.exe"):
-                shutil.move(file, output)
-                break
-        else:
-            message = "Zig binary not found in the archive"
-            raise RuntimeError(message)
+        lib = next(p for p in Path(tmp).rglob("lib") if p.is_dir())
+        exe = next(
+            p
+            for p in Path(tmp).rglob("zig*")
+            if p.is_file() and p.name in ("zig", "zig.exe")
+        )
+
+        Path(build_dir, "bin", "zig").mkdir(parents=True, exist_ok=True)
+        shutil.move(lib, build_dir / "bin" / "zig")
+        shutil.move(exe, build_dir / "bin")
+
+    for file in Path(build_dir / "bin").rglob("*"):
+        print(file)
 
 
 def pdm_build_hook_enabled(context: Context):
@@ -93,8 +98,7 @@ def pdm_build_hook_enabled(context: Context):
 
 def pdm_build_initialize(context: Context) -> None:
     context.ensure_build_dir()
-    output_path = Path(context.build_dir, "bin")
-    download(str(output_path))
+    download(context.build_dir)
 
 
 def pdm_build_finalize(context: Context, artifact: Path) -> None:
