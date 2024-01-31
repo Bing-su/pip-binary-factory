@@ -17,7 +17,7 @@ classifiers = [
 repository = "https://github.com/Bing-su/pip-binary-factory"
 
 [build-system]
-requires = ["pdm-backend"]
+requires = ["pdm-backend", "wheel"]
 build-backend = "pdm.backend"
 
 [tool.pdm.build]
