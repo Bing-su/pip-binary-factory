@@ -5,7 +5,7 @@ on:
 
 jobs:
   build-wheels:
-    name: build
+    name: build wheel
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -31,10 +31,19 @@ jobs:
           ZIG_PLATFORM: ${{ matrix.platform }}
 
       - name: Install test
-        if: ${{ matrix.platform }} == 'x86_64-linux'
-        run: |
+        if: matrix.platform == 'x86_64-linux'
+        run: |-
           pip install --no-index -f zig/dist/ zig-bin
-          zig --version
+          zig version
+
+          cat <<EOF > main.zig
+          const std = @import("std");
+
+          pub fn main() !void {
+              std.debug.print("Hello, World!\n", .{});
+          }
+          EOF
+          zig run main.zig
 
       - uses: actions/upload-artifact@v4
         with:
@@ -42,7 +51,7 @@ jobs:
           path: zig/dist
 
   build-sdist:
-    name: build
+    name: build sdist
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
