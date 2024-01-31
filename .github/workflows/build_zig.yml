@@ -1,0 +1,77 @@
+name: Build zig
+
+on:
+  - workflow_dispatch
+
+jobs:
+  build-wheels:
+    name: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform:
+          - x86_64-windows
+          - aarch64-windows
+          - x86-windows
+          - x86_64-macos
+          - aarch64-macos
+          - x86_64-linux
+          - aarch64-linux
+          - x86-linux
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - run: pipx run build -w
+        working-directory: zig
+        env:
+          ZIG_PLATFORM: ${{ matrix.platform }}
+
+      - name: Install test
+        if: ${{ matrix.platform }} == 'x86_64-linux'
+        run: |
+          pip install --no-index -f zig/dist/ zig-bin
+          zig --version
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: zig-${{ matrix.platform }}
+          path: zig/dist
+
+  build-sdist:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: pipx run build -s
+        working-directory: zig
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: zig-sdist
+          path: zig/dist
+
+  publish:
+    name: publish
+    runs-on: ubuntu-latest
+    needs: [build-wheels, build-sdist]
+    environment: publish
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - run: ls -R dist
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist
