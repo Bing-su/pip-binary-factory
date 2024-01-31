@@ -1,0 +1,54 @@
+[project]
+name = "zig-bin"
+description = "Zig is a general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software."
+version = "0.11.0"
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
+dependencies = []
+requires-python = ">=3.8"
+readme = "README.md"
+license = { text = "MIT" }
+keywords = ["zig"]
+classifiers = [
+    "OSI Approved :: MIT License",
+    "Programming Language :: Other",
+]
+
+[project.urls]
+repository = "https://github.com/Bing-su/pip-binary-factory"
+ziglang = "https://ziglang.org"
+
+[build-system]
+requires = ["pdm-backend", "wheel", "requests"]
+build-backend = "pdm.backend"
+
+[tool.pdm.build]
+is-purelib = false
+includes = ["zig.py"]
+excludes = ["bin/*", ".gitignore"]
+
+[tool.pdm.build.wheel-data]
+scripts = ["${BUILD_DIR}/bin/*"]
+
+[tool.ruff]
+select = [
+    "A",
+    "B",
+    "C4",
+    "C90",
+    "E",
+    "EM",
+    "F",
+    "FA",
+    "I001",
+    "ISC",
+    "N",
+    "PIE",
+    "PT",
+    "RET",
+    "RUF",
+    "SIM",
+    "UP",
+    "W",
+]
+ignore = ["B008", "B905", "E501"]
+unfixable = ["F401"]
