@@ -27,7 +27,7 @@ includes = ["zig.py"]
 excludes = ["bin/*", ".gitignore"]
 
 [tool.pdm.build.wheel-data]
-scripts = ["${BUILD_DIR}/bin/*"]
+scripts = [{ path = "${BUILD_DIR}/bin/**/*", relative-to = ".pdm-build/bin" }]
 
 [tool.ruff]
 select = [

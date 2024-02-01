@@ -84,12 +84,9 @@ def download(build_dir: Path) -> None:
             if p.is_file() and p.name in ("zig", "zig.exe")
         )
 
-        Path(build_dir, "bin", "zig").mkdir(parents=True, exist_ok=True)
-        shutil.move(lib, build_dir / "bin" / "zig")
+        Path(build_dir, "bin", "lib").mkdir(parents=True, exist_ok=True)
+        shutil.move(lib, build_dir / "bin" / "lib" / "zig")
         shutil.move(exe, build_dir / "bin")
-
-    for file in Path(build_dir / "bin").rglob("*"):
-        print(file)
 
 
 def pdm_build_hook_enabled(context: Context):
