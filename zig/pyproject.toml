@@ -9,7 +9,7 @@ readme = "README.md"
 license = { text = "MIT" }
 keywords = ["zig"]
 classifiers = [
-    "OSI Approved :: MIT License",
+    "License :: OSI Approved :: MIT License",
     "Programming Language :: Other",
 ]
 
