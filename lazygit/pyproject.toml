@@ -1,7 +1,7 @@
 [project]
 name = "lazygit-py"
 description = "lazygit - simple terminal UI for git commands"
-version = "0.40.2"
+version = "0.41.0"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.8"
@@ -15,9 +15,10 @@ classifiers = [
 
 [project.urls]
 repository = "https://github.com/Bing-su/pip-binary-factory"
+lazygit = "https://github.com/jesseduffield/lazygit"
 
 [build-system]
-requires = ["pdm-backend"]
+requires = ["pdm-backend", "wheel"]
 build-backend = "pdm.backend"
 
 [tool.pdm.build]
