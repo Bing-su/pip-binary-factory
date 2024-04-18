@@ -1,7 +1,7 @@
 [project]
 name = "go-task-bin"
 description = "task - A task runner / simpler Make alternative written in Go"
-version = "3.35.1"
+version = "3.36.0"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.8"
@@ -27,9 +27,10 @@ classifiers = [
 
 [project.urls]
 repository = "https://github.com/Bing-su/pip-binary-factory"
+taskfile = "https://taskfile.dev"
 
 [build-system]
-requires = ["pdm-backend"]
+requires = ["pdm-backend", "wheel"]
 build-backend = "pdm.backend"
 
 [tool.pdm.build]
