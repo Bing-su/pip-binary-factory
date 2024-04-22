@@ -1,7 +1,7 @@
 [project]
 name = "zig-bin"
 description = "Zig is a general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software."
-version = "0.11.0"
+version = "0.12.0"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.8"
