@@ -13,7 +13,7 @@ if TYPE_CHECKING:
     from pdm.backend.hooks import Context
 
 NAME = "task"
-VERSION = "3.37.0"
+VERSION = "3.37.1"
 
 
 def is_windows():
