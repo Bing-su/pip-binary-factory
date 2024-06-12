@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from pdm.backend.hooks import Context
 
 NAME = "zig"
-VERSION = "0.12.0"
+VERSION = "0.13.0"
 
 ZIG_VERSION_INFO_URL = "https://ziglang.org/download/index.json"
 ZIG_PYTHON_PLATFORMS = {
