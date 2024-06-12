@@ -3,9 +3,15 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+from wheel.cli.tags import tags
+
+if TYPE_CHECKING:
+    from pdm.backend.hooks import Context
 
 NAME = "eget"
-VERSION = "1.3.3"
+VERSION = "1.3.4"
 
 
 def is_windows():
@@ -46,3 +52,8 @@ def pdm_build_initialize(context) -> None:
     if is_windows():
         output_path = output_path.with_suffix(".exe")
     build(str(output_path))
+
+
+def pdm_build_finalize(context: Context, artifact: Path) -> None:
+    renamed = tags(str(artifact), python_tags="py3", abi_tags="none", remove=True)
+    print(renamed)
