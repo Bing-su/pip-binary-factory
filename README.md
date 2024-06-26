@@ -8,3 +8,16 @@ binary package with pip install
 - fzf: https://github.com/junegunn/fzf
 - task: https://taskfile.dev, https://github.com/go-task/task
 - zig: https://ziglang.org, https://github.com/ziglang/zig
+
+## pipx
+
+To install the packages listed above using pipx, you can use the following commands:
+
+- micro: `pipx install micro-editor`
+- eget: `pipx install eget-py`
+- lazygit: `pipx install lazygit-py`
+- fzf: `pipx install fzf-bin`
+- task: `pipx install go-task-bin`
+- zig: Unfortunately, installing zig using pipx may result in errors. Install with pip or use the official installation method.
+
+Please note that you need to have pipx installed on your system before running these commands. You can install pipx by following the instructions provided in the [pipx documentation](https://pipx.pypa.io/stable/).
