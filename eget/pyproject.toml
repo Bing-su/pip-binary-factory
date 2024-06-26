@@ -7,7 +7,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 keywords = ["eget", "github"]
 classifiers = [
-    "Programming Language :: Other",
+    "Programming Language :: Go",
     "Topic :: System :: Installation/Setup",
 ]
 

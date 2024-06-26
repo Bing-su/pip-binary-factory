@@ -21,7 +21,7 @@ keywords = [
     "tool",
 ]
 classifiers = [
-    "Programming Language :: Other",
+    "Programming Language :: Go",
     "Topic :: Software Development :: Build Tools",
 ]
 

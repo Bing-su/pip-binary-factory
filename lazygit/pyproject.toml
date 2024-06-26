@@ -9,7 +9,7 @@ readme = "README.md"
 license = { text = "MIT" }
 keywords = ["git", "tui"]
 classifiers = [
-    "Programming Language :: Python :: 3",
+    "Programming Language :: Go",
     "Topic :: Software Development :: Version Control :: Git",
 ]
 

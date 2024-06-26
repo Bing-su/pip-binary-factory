@@ -9,8 +9,9 @@ readme = "README.md"
 license = { text = "MIT" }
 keywords = ["fzf", "tui", "fuzzy finder"]
 classifiers = [
-    "Programming Language :: Other",
+    "Programming Language :: Go",
     "Topic :: Software Development :: User Interfaces",
+    "Topic :: Terminals",
 ]
 
 [project.urls]
