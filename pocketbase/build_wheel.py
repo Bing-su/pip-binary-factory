@@ -25,6 +25,8 @@ def build(os_: str, arch: str, platform: str):
         "-m",
         "build",
         "-w",
+        "--installer",
+        "uv",
         f"--config-setting=--plat-name={platform}",
     ]
 
