@@ -1,0 +1,64 @@
+[project]
+name = "pocketbase-bin"
+description = "Open Source backend for your next SaaS and Mobile app in 1 file"
+version = "0.22.17"
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
+dependencies = []
+requires-python = ">=3.8"
+readme = "README.md"
+license = { text = "MIT" }
+keywords = ["backend", "golang", "admin"]
+classifiers = [
+    "Programming Language :: Go",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Database",
+]
+
+[project.urls]
+repository = "https://github.com/Bing-su/pip-binary-factory"
+pocketbase = "https://pocketbase.io"
+
+[build-system]
+requires = ["pdm-backend", "wheel"]
+build-backend = "pdm.backend"
+
+[tool.pdm.build]
+is-purelib = false
+source-includes = ["go.mod", "go.sum", "main.go", "fix.go", "download.nu"]
+excludes = ["bin/*", ".gitignore"]
+
+[tool.pdm.build.wheel-data]
+scripts = ["${BUILD_DIR}/bin/*"]
+
+[tool.ruff]
+select = [
+    "A",
+    "B",
+    "C4",
+    "C90",
+    "E",
+    "EM",
+    "F",
+    "FA",
+    "FBT",
+    "FURB",
+    "I001",
+    "ISC",
+    "N",
+    "PD",
+    "PERF",
+    "PIE",
+    "PL",
+    "PT",
+    "PTH",
+    "RET",
+    "RUF",
+    "S",
+    "SIM",
+    "T20",
+    "TRY",
+    "UP",
+    "W",
+]
+ignore = ["B905", "E501"]
+unfixable = ["F401"]
