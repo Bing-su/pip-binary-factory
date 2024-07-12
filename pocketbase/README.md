@@ -23,9 +23,10 @@ Compared to the original, this package has the following differences
 
 - The `pb_data`, `pb_migrations` directories are created in the current working directory, not next to the executable.
 
-- The default value of `publicDir` is also set to `pb_public` in the current working path.
+- The default value of `publicDir` is also set to `pb_public` in the current working directory.
 
 ## Python SDK
 
 [pocketbase](https://pypi.org/project/pocketbase/)
+
 [pocketbase-async](https://pypi.org/project/pocketbase-async/)

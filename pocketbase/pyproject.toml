@@ -1,7 +1,7 @@
 [project]
 name = "pocketbase-bin"
 description = "Open Source backend for your next SaaS and Mobile app in 1 file"
-version = "0.22.17-rc.0"
+version = "0.22.17"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.8"
@@ -24,7 +24,7 @@ build-backend = "pdm.backend"
 
 [tool.pdm.build]
 is-purelib = false
-source-includes = ["go.mod", "go.sum", "main.go", "fix.go", "download.nu"]
+source-includes = ["go.mod", "go.sum", "*.go", "download.nu"]
 excludes = ["bin/*", ".gitignore", "pdm_build.py", "build_wheel.py"]
 
 [tool.pdm.build.wheel-data]
