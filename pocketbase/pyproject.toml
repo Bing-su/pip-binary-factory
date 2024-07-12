@@ -19,18 +19,18 @@ repository = "https://github.com/Bing-su/pip-binary-factory"
 pocketbase = "https://pocketbase.io"
 
 [build-system]
-requires = ["pdm-backend", "wheel"]
+requires = ["pdm-backend", "tomli; python_version < '3.11'"]
 build-backend = "pdm.backend"
 
 [tool.pdm.build]
 is-purelib = false
 source-includes = ["go.mod", "go.sum", "main.go", "fix.go", "download.nu"]
-excludes = ["bin/*", ".gitignore"]
+excludes = ["bin/*", ".gitignore", "pdm_build.py", "build_wheel.py"]
 
 [tool.pdm.build.wheel-data]
 scripts = ["${BUILD_DIR}/bin/*"]
 
-[tool.ruff]
+[tool.ruff.lint]
 select = [
     "A",
     "B",
