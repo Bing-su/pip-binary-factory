@@ -1,7 +1,7 @@
 [project]
 name = "lazygit-py"
 description = "lazygit - simple terminal UI for git commands"
-version = "0.42.0"
+version = "0.43.1"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.8"
@@ -18,7 +18,7 @@ repository = "https://github.com/Bing-su/pip-binary-factory"
 lazygit = "https://github.com/jesseduffield/lazygit"
 
 [build-system]
-requires = ["pdm-backend", "wheel"]
+requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
 [tool.pdm.build]
@@ -29,7 +29,7 @@ excludes = ["bin/*", ".gitignore"]
 [tool.pdm.build.wheel-data]
 scripts = ["${BUILD_DIR}/bin/*"]
 
-[tool.ruff]
+[tool.ruff.lint]
 select = [
     "A",
     "B",
@@ -39,16 +39,25 @@ select = [
     "EM",
     "F",
     "FA",
+    "FBT",
+    "FURB",
     "I001",
     "ISC",
     "N",
+    "PD",
+    "PERF",
     "PIE",
+    "PL",
     "PT",
+    "PTH",
     "RET",
     "RUF",
+    "S",
     "SIM",
+    "T20",
+    "TRY",
     "UP",
     "W",
 ]
-ignore = ["B008", "B905", "E501"]
+ignore = ["B905", "E501"]
 unfixable = ["F401"]
