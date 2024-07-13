@@ -19,6 +19,10 @@ https://github.com/pocketbase/pocketbase
 
 ## PyPI package
 
+```sh
+pip install pocketbase-bin
+```
+
 Compared to the original, this package has the following differences
 
 - The `pb_data`, `pb_migrations` directories are created in the current working directory, not next to the executable.
