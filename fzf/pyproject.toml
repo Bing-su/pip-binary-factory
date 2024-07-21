@@ -24,7 +24,7 @@ build-backend = "pdm.backend"
 [tool.pdm.build]
 is-purelib = false
 source-includes = ["fzf/"]
-excludes = ["bin/*", ".gitignore"]
+excludes = ["bin/*", ".gitignore", "*.py"]
 
 [tool.pdm.build.wheel-data]
 scripts = ["${BUILD_DIR}/bin/*"]
