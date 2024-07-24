@@ -29,6 +29,8 @@ Compared to the original, this package has the following differences
 
 - The default value of `publicDir` is also set to `pb_public` in the current working directory.
 
+- `pocketbase update` command is disabled.
+
 ## Python SDK
 
 [pocketbase](https://pypi.org/project/pocketbase/)
