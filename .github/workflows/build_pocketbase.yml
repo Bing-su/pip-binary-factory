@@ -18,6 +18,8 @@ jobs:
         with:
           go-version: "stable"
       - uses: goto-bus-stop/setup-zig@v2
+        with:
+          version: 0.13.0
 
       - run: uv pip install --system "build[virtualenv]" wheel
       - run: python build_wheel.py
@@ -28,6 +30,7 @@ jobs:
       - run: |
           pip install --no-index -f pocketbase/dist/ pocketbase-bin
           pocketbase --version
+          objdump -T $(which pocketbase) | grep GLIBC | sed 's/.*GLIBC_\([.0-9]*\).*/\1/g' | sort -Vu
 
       - uses: actions/upload-artifact@v4
         with:
