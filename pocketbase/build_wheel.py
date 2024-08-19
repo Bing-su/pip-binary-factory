@@ -17,6 +17,8 @@ def build(os_: str, arch: str, platform: str):
         and machine() == "x86_64"
     ):
         os.environ["CGO_ENABLED"] = "1"
+        os.environ["CC"] = "zig cc -target x86_64-linux-gnu"
+        os.environ["CXX"] = "zig c++ -target x86_64-linux-gnu"
     else:
         os.environ["CGO_ENABLED"] = "0"
 
@@ -36,9 +38,13 @@ def build(os_: str, arch: str, platform: str):
         return
 
     arch = platform.split("_", maxsplit=1)[-1]
-    platform_tag = f"manylinux_2_17_{arch}.manylinux2014_{arch}"
-    if arch != "x86_64":
-        platform_tag += f".musllinux_1_1_{arch}"
+
+    if arch == "x86_64":
+        platform_tag = "manylinux_2_28_x86_64"
+    else:
+        platform_tag = (
+            f"manylinux_2_17_{arch}.manylinux2014_{arch}.musllinux_1_1_{arch}"
+        )
 
     whl = next(Path("dist").glob(f"*{platform}*"))
 
