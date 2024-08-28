@@ -14,8 +14,6 @@ def build(os_: str, arch: str, platform: str):
         "-m",
         "build",
         "-w",
-        "--config-setting=--python-tag=py3",
-        "--config-setting=--py-limited-api=none",
         f"--config-setting=--plat-name={platform}",
     ]
 

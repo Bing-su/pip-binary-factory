@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 NAME = "micro"
-VERSION = "2.0.13"
+VERSION = "2.0.14"
 
 
 def is_windows():
@@ -42,6 +42,9 @@ def pdm_build_hook_enabled(context):
 
 
 def pdm_build_initialize(context) -> None:
+    add = {"--python-tag": "py3", "--py-limited-api": "none"}
+    context.builder.config_settings = {**add, **context.builder.config_settings}
+
     context.ensure_build_dir()
     output_path = Path(context.build_dir, "bin", NAME)
     if is_windows():
