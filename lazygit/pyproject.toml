@@ -1,7 +1,7 @@
 [project]
 name = "lazygit-py"
 description = "lazygit - simple terminal UI for git commands"
-version = "0.43.1"
+version = "0.44.0"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.8"
@@ -24,7 +24,7 @@ build-backend = "pdm.backend"
 [tool.pdm.build]
 is-purelib = false
 source-includes = ["lazygit/"]
-excludes = ["bin/*", ".gitignore"]
+excludes = ["bin/*", ".gitignore", "*.py"]
 
 [tool.pdm.build.wheel-data]
 scripts = ["${BUILD_DIR}/bin/*"]

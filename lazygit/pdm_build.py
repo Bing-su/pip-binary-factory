@@ -4,6 +4,7 @@ import os
 import shutil
 import subprocess
 import sys
+from datetime import datetime
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -11,7 +12,7 @@ if TYPE_CHECKING:
     from pdm.backend.hooks import Context
 
 NAME = "lazygit"
-VERSION = "0.43.1"
+VERSION = "0.44.0"
 
 
 def is_windows():
@@ -26,6 +27,8 @@ def build(output: str) -> None:
         msg = "golang is required and 'go' should be in $PATH"
         raise RuntimeError(msg)
 
+    today = datetime.now().strftime("%Y-%m-%d")
+
     args = [
         go,
         "build",
@@ -33,7 +36,7 @@ def build(output: str) -> None:
         output,
         "-trimpath",
         "-ldflags",
-        f"-s -w -X main.Version={VERSION}",
+        f"-s -w -X main.version={VERSION} main.date={today} main.buildSource=pypi",
         ".",
     ]
 
