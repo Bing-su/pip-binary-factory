@@ -4,6 +4,14 @@ import sys
 from pathlib import Path
 from platform import machine, system
 
+linux_platform_map = {
+    "manylinux_2_28_x86_64": "manylinux_2_28_x86_64",
+    "musllinux_1_1_x86_64": "manylinux_2_17_x86_64.manylinux2014_x86_64.musllinux_1_1_x86_64",
+    "manylinux2014_aarch64": "manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64",
+    "manylinux2014_s390x": "manylinux_2_17_s390x.manylinux2014_s390x.musllinux_1_1_s390x",
+    "manylinux2014_ppc64le": "manylinux_2_17_ppc64le.manylinux2014_ppc64le.musllinux_1_1_ppc64le",
+}
+
 
 def build(os_: str, arch: str, platform: str):
     os.environ["GOOS"] = os_
@@ -34,17 +42,10 @@ def build(os_: str, arch: str, platform: str):
 
     subprocess.run(args, check=True)  # noqa: S603
 
-    if "manylinux" not in platform:
+    if "linux" not in platform:
         return
 
-    arch = platform.split("_", maxsplit=1)[-1]
-
-    if arch == "x86_64":
-        platform_tag = "manylinux_2_28_x86_64"
-    else:
-        platform_tag = (
-            f"manylinux_2_17_{arch}.manylinux2014_{arch}.musllinux_1_1_{arch}"
-        )
+    platform_tag = linux_platform_map[platform]
 
     whl = next(Path("dist").glob(f"*{platform}*"))
 
@@ -67,7 +68,7 @@ def main():
         ("windows", "arm64", "win_arm64"),
         ("darwin", "amd64", "macosx_10_7_x86_64"),
         ("darwin", "arm64", "macosx_11_0_arm64"),
-        ("linux", "amd64", "manylinux2014_x86_64"),
+        ("linux", "amd64", "manylinux_2_28_x86_64"),
         ("linux", "amd64", "musllinux_1_1_x86_64"),
         ("linux", "arm64", "manylinux2014_aarch64"),
         ("linux", "s390x", "manylinux2014_s390x"),
