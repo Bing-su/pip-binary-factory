@@ -4,6 +4,7 @@ import os
 import platform
 import shutil
 import subprocess
+import sysconfig
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -42,9 +43,7 @@ def build(output: str) -> None:
         gopath = str(Path.home().joinpath("go"))
         os.environ["GOPATH"] = gopath
 
-    binary = Path(gopath, "bin", NAME)
-    if is_windows():
-        binary = binary.with_suffix(".exe")
+    binary = Path(gopath, "bin", f"{NAME}{sysconfig.get_config_var('EXE')}")
     os.environ.setdefault("CGO_ENABLED", "0")
 
     args = [
