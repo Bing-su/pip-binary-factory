@@ -26,6 +26,7 @@ build-backend = "pdm.backend"
 
 [tool.pdm.build]
 is-purelib = false
+source-includes = ["*.go", "go.mod", "go.sum"]
 excludes = ["bin/*", ".gitignore", "*.py"]
 
 [tool.pdm.build.wheel-data]

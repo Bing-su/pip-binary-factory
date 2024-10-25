@@ -4,7 +4,6 @@ import os
 import platform
 import shutil
 import subprocess
-import sysconfig
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -36,31 +35,24 @@ def build(output: str) -> None:
         msg = "golang is required and 'go' should be in $PATH"
         raise RuntimeError(msg)
 
-    if "GOPATH" in os.environ:
-        gopath = os.environ["GOPATH"]
-    else:
-        # https://go.dev/wiki/GOPATH
-        gopath = str(Path.home().joinpath("go"))
-        os.environ["GOPATH"] = gopath
-
-    binary = Path(gopath, "bin", f"{NAME}{sysconfig.get_config_var('EXE')}")
-    os.environ.setdefault("CGO_ENABLED", "0")
+    cwd = Path(__file__).parent
+    version_file = cwd.joinpath("VERSION")
+    version_file.write_text(VERSION, encoding="utf-8")
 
     args = [
         go,
-        "install",
+        "build",
+        "-o",
+        output,
         "-trimpath",
         "-ldflags",
         f"-s -w -X main.version={VERSION}",
-        f"github.com/nektos/act@v{VERSION}",
+        ".",
     ]
 
-    cwd = Path(__file__).parent
     subprocess.run(args, check=True, cwd=cwd)  # noqa: S603
-
-    Path(output).parent.mkdir(parents=True, exist_ok=True)
-    shutil.move(binary, output)
     Path(output).chmod(0o777)
+    version_file.unlink()
 
 
 def pdm_build_hook_enabled(context: Context):
