@@ -35,7 +35,13 @@ def build(output: str) -> None:
         msg = "golang is required and 'go' should be in $PATH"
         raise RuntimeError(msg)
 
-    gopath = os.environ["GOPATH"]
+    if "GOPATH" in os.environ:
+        gopath = os.environ["GOPATH"]
+    else:
+        # https://go.dev/wiki/GOPATH
+        gopath = str(Path.home().joinpath("go"))
+        os.environ["GOPATH"] = gopath
+
     binary = Path(gopath, "bin", NAME)
     if is_windows():
         binary = binary.with_suffix(".exe")
