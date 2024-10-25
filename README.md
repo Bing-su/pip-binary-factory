@@ -9,6 +9,7 @@ binary package with pip install
 - task: https://taskfile.dev, https://github.com/go-task/task
 - zig: https://ziglang.org, https://github.com/ziglang/zig
 - pocketbase: https://pocketbase.io, https://github.com/pocketbase/pocketbase
+- act: https://nektosact.com, https://github.com/nektos/act
 
 ## pipx
 
@@ -21,5 +22,6 @@ To install the packages listed above using pipx, you can use the following comma
 - task: `pipx install go-task-bin`
 - zig: Unfortunately, installing zig using pipx may result in errors. Install with pip or use the official installation method.
 - pocketbase: `pipx install pocketbase-bin`
+- act: `pipx install act-bin`
 
 Please note that you need to have pipx installed on your system before running these commands. You can install pipx by following the instructions provided in the [pipx documentation](https://pipx.pypa.io/stable/).
