@@ -13,11 +13,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - uses: yezz123/setup-uv@v4
+      - uses: astral-sh/setup-uv@v3
       - uses: actions/setup-go@v5
         with:
           go-version: "stable"
-      - uses: goto-bus-stop/setup-zig@v2
 
       - run: uv pip install --system "build[virtualenv]" wheel
       - run: python build_wheel.py
