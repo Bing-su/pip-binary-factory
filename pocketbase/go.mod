@@ -2,7 +2,7 @@ module pocketbase
 
 go 1.23
 
-require github.com/pocketbase/pocketbase v0.23.1
+require github.com/pocketbase/pocketbase v0.23.2
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7 // indirect
