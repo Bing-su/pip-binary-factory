@@ -12,7 +12,7 @@ if TYPE_CHECKING:
     from pdm.backend.hooks import Context
 
 NAME = "lazygit"
-VERSION = "0.45.0"
+VERSION = "0.45.2"
 
 
 def is_windows():
