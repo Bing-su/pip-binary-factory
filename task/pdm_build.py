@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from pdm.backend.hooks import Context
 
 NAME = "task"
-VERSION = "3.40.1"
+VERSION = "3.41.0"
 
 
 def is_windows():
@@ -33,7 +33,7 @@ def build(output: str) -> None:
         output,
         "-trimpath",
         "-ldflags",
-        f"-s -w -X github.com/go-task/task/v3/internal/version.version={VERSION}",
+        f"-s -w -X github.com/go-task/task/v3/internal/version.version={VERSION} -X github.com/go-task/task/v3/internal/version.sum=pypi",
         "./cmd/task",
     ]
 
