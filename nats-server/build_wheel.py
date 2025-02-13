@@ -13,6 +13,8 @@ def build(os_: str, arch: str, platform: str):
         sys.executable,
         "-m",
         "build",
+        "--installer",
+        "uv",
         "-w",
         f"--config-setting=--plat-name={platform}",
     ]
