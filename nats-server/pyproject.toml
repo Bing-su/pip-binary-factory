@@ -1,0 +1,58 @@
+[project]
+name = "nats-server-bin"
+description = "High-Performance server for NATS.io, the cloud and edge native messaging system."
+version = "2.10.25"
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
+dependencies = []
+requires-python = ">=3.7"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+keywords = [
+    "nats",
+    "messaging",
+    "queue",
+]
+classifiers = [
+    "Programming Language :: Go",
+    "Topic :: System :: Networking",
+]
+
+[project.urls]
+repository = "https://github.com/Bing-su/pip-binary-factory"
+"nats.io" = "https://nats.io/"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm.build]
+is-purelib = false
+source-includes = ["nats-server/"]
+excludes = ["bin/*", ".gitignore", "*.py"]
+
+[tool.pdm.build.wheel-data]
+scripts = ["${BUILD_DIR}/bin/*"]
+
+[tool.ruff]
+select = [
+    "A",
+    "B",
+    "C4",
+    "C90",
+    "E",
+    "EM",
+    "F",
+    "FA",
+    "I001",
+    "ISC",
+    "N",
+    "PIE",
+    "PT",
+    "RET",
+    "RUF",
+    "SIM",
+    "UP",
+    "W",
+]
+ignore = ["B008", "B905", "E501"]
+unfixable = ["F401"]

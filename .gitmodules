@@ -13,3 +13,6 @@
 [submodule "task/task"]
 	path = task/task
 	url = https://github.com/go-task/task
+[submodule "nats-server/nats-server"]
+	path = nats-server/nats-server
+	url = https://github.com/nats-io/nats-server
