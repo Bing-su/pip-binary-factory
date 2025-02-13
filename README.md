@@ -10,6 +10,7 @@ binary package with pip install
 - zig: https://ziglang.org, https://github.com/ziglang/zig
 - pocketbase: https://pocketbase.io, https://github.com/pocketbase/pocketbase
 - act: https://nektosact.com, https://github.com/nektos/act
+- nats-server: https://nats.io, https://github.com/nats-io/nats-server
 
 ## pipx
 
@@ -23,5 +24,6 @@ To install the packages listed above using pipx, you can use the following comma
 - zig: Unfortunately, installing zig using pipx may result in errors. Install with pip or use the official installation method.
 - pocketbase: `pipx install pocketbase-bin`
 - act: `pipx install act-bin`
+- nats-server: `pipx install nats-server-bin`
 
 Please note that you need to have pipx installed on your system before running these commands. You can install pipx by following the instructions provided in the [pipx documentation](https://pipx.pypa.io/stable/).
