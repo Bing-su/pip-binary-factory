@@ -2,15 +2,15 @@
 
 binary package with pip install
 
-- micro: https://github.com/zyedidia/micro
-- eget: https://github.com/zyedidia/eget
-- lazygit: https://github.com/jesseduffield/lazygit
-- fzf: https://github.com/junegunn/fzf
-- task: https://taskfile.dev, https://github.com/go-task/task
-- zig: https://ziglang.org, https://github.com/ziglang/zig
-- pocketbase: https://pocketbase.io, https://github.com/pocketbase/pocketbase
-- act: https://nektosact.com, https://github.com/nektos/act
-- nats-server: https://nats.io, https://github.com/nats-io/nats-server
+- micro: https://github.com/zyedidia/micro  [![Go project version](https://badge.fury.io/go/github.com%2Fzyedidia%2Fmicro%2Fv2.svg)](https://badge.fury.io/go/github.com%2Fzyedidia%2Fmicro%2Fv2)
+- eget: https://github.com/zyedidia/eget  [![Go project version](https://badge.fury.io/go/github.com%2Fzyedidia%2Feget.svg)](https://badge.fury.io/go/github.com%2Fzyedidia%2Feget)
+- lazygit: https://github.com/jesseduffield/lazygit  [![Go project version](https://badge.fury.io/go/github.com%2Fjesseduffield%2Flazygit.svg)](https://badge.fury.io/go/github.com%2Fjesseduffield%2Flazygit)
+- fzf: https://github.com/junegunn/fzf  [![Go project version](https://badge.fury.io/go/github.com%2Fjunegunn%2Ffzf.svg)](https://badge.fury.io/go/github.com%2Fjunegunn%2Ffzf)
+- task: https://taskfile.dev, https://github.com/go-task/task  [![Go project version](https://badge.fury.io/go/github.com%2Fgo-task%2Ftask%2Fv3.svg)](https://badge.fury.io/go/github.com%2Fgo-task%2Ftask%2Fv3)
+- zig: https://ziglang.org, https://github.com/ziglang/zig  [![GitHub version](https://badge.fury.io/gh/ziglang%2Fzig.svg)](https://badge.fury.io/gh/ziglang%2Fzig)
+- pocketbase: https://pocketbase.io, https://github.com/pocketbase/pocketbase  [![Go project version](https://badge.fury.io/go/github.com%2Fpocketbase%2Fpocketbase.svg)](https://badge.fury.io/go/github.com%2Fpocketbase%2Fpocketbase)
+- act: https://nektosact.com, https://github.com/nektos/act  [![Go project version](https://badge.fury.io/go/github.com%2Fnektos%2Fact.svg)](https://badge.fury.io/go/github.com%2Fnektos%2Fact)
+- nats-server: https://nats.io, https://github.com/nats-io/nats-server  [![Go project version](https://badge.fury.io/go/github.com%2Fnats-io%2Fnats-server%2Fv2.svg)](https://badge.fury.io/go/github.com%2Fnats-io%2Fnats-server%2Fv2)
 
 ## pipx
 
