@@ -1,10 +1,10 @@
 [project]
 name = "lazygit-py"
 description = "lazygit - simple terminal UI for git commands"
-version = "0.45.2"
+version = "0.46.0"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
-requires-python = ">=3.8"
+requires-python = ">=3.7"
 readme = "README.md"
 license = { text = "MIT" }
 keywords = ["git", "tui"]

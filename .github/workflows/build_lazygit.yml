@@ -33,6 +33,8 @@ jobs:
         with:
           path: lazygit/dist
 
+      - run: ls -R lazygit/dist
+
   publish:
     name: publish
     runs-on: ubuntu-latest

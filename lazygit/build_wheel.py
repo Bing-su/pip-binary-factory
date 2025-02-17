@@ -31,12 +31,12 @@ def build(os_: str, arch: str, platform: str):
         "-m",
         "wheel",
         "tags",
+        "--remove",
         "--platform-tag",
         f"manylinux_2_17_{arch}.manylinux2014_{arch}.musllinux_1_1_{arch}",
         str(whl),
     ]
     subprocess.run(args, check=True)  # noqa: S603
-    whl.unlink()
 
 
 def main():
