@@ -22,7 +22,7 @@ repository = "https://github.com/Bing-su/pip-binary-factory"
 "nats.io" = "https://nats.io/"
 
 [build-system]
-requires = ["pdm-backend"]
+requires = ["pdm-backend", "tomli; python_version < '3.11'"]
 build-backend = "pdm.backend"
 
 [tool.pdm.build]
