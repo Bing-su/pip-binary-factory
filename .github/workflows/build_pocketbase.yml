@@ -21,13 +21,17 @@ jobs:
       - run: uv pip install --system "build[virtualenv]" wheel
       - run: python build_wheel.py
         working-directory: ./pocketbase
-      - run: python -m build -s
+      - run: uv build --sdist
         working-directory: ./pocketbase
 
       - run: |
-          pip install --no-index -f pocketbase/dist/ pocketbase-bin
+          uv pip install --system --no-index -f pocketbase/dist/ pocketbase-bin
+          which pocketbase
           pocketbase --version
-          objdump -T $(which pocketbase) | grep GLIBC | sed 's/.*GLIBC_\([.0-9]*\).*/\1/g' | sort -Vu
+
+          nohup pocketbase serve > pb.log 2>&1 &
+          sleep 2
+          cat pb.log
 
       - uses: actions/upload-artifact@v4
         with:
