@@ -1,7 +1,7 @@
 [project]
 name = "pocketbase-bin"
 description = "Open Source backend for your next SaaS and Mobile app in 1 file"
-version = "0.25.5"
+version = "0.25.7"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.7"
