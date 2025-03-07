@@ -18,7 +18,7 @@ repository = "https://github.com/Bing-su/pip-binary-factory"
 ziglang = "https://ziglang.org"
 
 [build-system]
-requires = ["pdm-backend", "requests"]
+requires = ["pdm-backend", "wheel", "requests"]
 build-backend = "pdm.backend"
 
 [tool.pdm.build]

@@ -8,6 +8,7 @@ from tempfile import TemporaryDirectory
 from typing import TYPE_CHECKING
 
 import requests
+from wheel.cli.tags import tags
 
 if TYPE_CHECKING:
     from pdm.backend.hooks import Context
@@ -99,3 +100,18 @@ def pdm_build_initialize(context: Context) -> None:
 
     context.ensure_build_dir()
     download(context.build_dir)
+
+
+def pdm_build_finalize(context: Context, artifact: Path) -> None:
+    platform_tags = ZIG_PYTHON_PLATFORMS[get_platform()]
+    renamed = tags(
+        str(artifact),
+        python_tags="py3",
+        abi_tags="none",
+        platform_tags=platform_tags,
+        remove=True,
+    )
+    print(renamed)
+
+    if context.build_dir.exists():
+        shutil.rmtree(context.build_dir)
