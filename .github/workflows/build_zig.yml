@@ -36,6 +36,7 @@ jobs:
           pip install --no-index -f zig/dist/ zig-bin
           which zig
           zig version
+          zig env
 
           cat <<EOF > main.zig
           const std = @import("std");
@@ -44,6 +45,7 @@ jobs:
               std.debug.print("Hello, World!\n", .{});
           }
           EOF
+
           zig run main.zig
           python -m zig run main.zig
 
