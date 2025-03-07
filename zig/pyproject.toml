@@ -1,10 +1,10 @@
 [project]
 name = "zig-bin"
 description = "Zig is a general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software."
-version = "0.13.0"
+version = "0.14.0"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
-requires-python = ">=3.8"
+requires-python = ">=3.7"
 readme = "README.md"
 license = { text = "MIT" }
 keywords = ["zig"]
@@ -18,16 +18,17 @@ repository = "https://github.com/Bing-su/pip-binary-factory"
 ziglang = "https://ziglang.org"
 
 [build-system]
-requires = ["pdm-backend", "wheel", "requests"]
+requires = ["pdm-backend", "requests"]
 build-backend = "pdm.backend"
 
 [tool.pdm.build]
 is-purelib = false
 includes = ["zig.py"]
-excludes = ["bin/*", ".gitignore"]
+excludes = ["bin/*", "lib/*", ".gitignore"]
 
 [tool.pdm.build.wheel-data]
-scripts = [{ path = "${BUILD_DIR}/bin/**/*", relative-to = ".pdm-build/bin" }]
+scripts = ["${BUILD_DIR}/bin/*"]
+data = [{ path = "${BUILD_DIR}/lib/**/*", relative-to = ".pdm-build" }]
 
 [tool.ruff]
 select = [

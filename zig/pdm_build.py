@@ -8,13 +8,12 @@ from tempfile import TemporaryDirectory
 from typing import TYPE_CHECKING
 
 import requests
-from wheel.cli.tags import tags
 
 if TYPE_CHECKING:
     from pdm.backend.hooks import Context
 
 NAME = "zig"
-VERSION = "0.13.0"
+VERSION = "0.14.0"
 
 ZIG_VERSION_INFO_URL = "https://ziglang.org/download/index.json"
 ZIG_PYTHON_PLATFORMS = {
@@ -84,8 +83,9 @@ def download(build_dir: Path) -> None:
             if p.is_file() and p.name in ("zig", "zig.exe")
         )
 
-        Path(build_dir, "bin", "lib").mkdir(parents=True, exist_ok=True)
-        shutil.move(lib, build_dir / "bin" / "lib" / "zig")
+        Path(build_dir, "bin").mkdir(parents=True, exist_ok=True)
+        Path(build_dir, "lib").mkdir(parents=True, exist_ok=True)
+        shutil.move(lib, build_dir / "lib" / "zig")
         shutil.move(exe, build_dir / "bin")
 
 
@@ -94,20 +94,8 @@ def pdm_build_hook_enabled(context: Context):
 
 
 def pdm_build_initialize(context: Context) -> None:
+    setting = {"--python-tag": "py3", "--py-limited-api": "none"}
+    context.builder.config_settings = {**setting, **context.builder.config_settings}
+
     context.ensure_build_dir()
     download(context.build_dir)
-
-
-def pdm_build_finalize(context: Context, artifact: Path) -> None:
-    platform_tags = ZIG_PYTHON_PLATFORMS[get_platform()]
-    renamed = tags(
-        str(artifact),
-        python_tags="py3",
-        abi_tags="none",
-        platform_tags=platform_tags,
-        remove=True,
-    )
-    print(renamed)
-
-    if context.build_dir.exists():
-        shutil.rmtree(context.build_dir)
