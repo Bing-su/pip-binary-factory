@@ -1,10 +1,10 @@
 [project]
 name = "go-task-bin"
 description = "task - A task runner / simpler Make alternative written in Go"
-version = "3.41.0"
+version = "3.42.0"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
-requires-python = ">=3.8"
+requires-python = ">=3.7"
 readme = "README.md"
 license = { text = "MIT" }
 keywords = [
