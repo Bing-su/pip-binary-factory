@@ -16,3 +16,6 @@
 [submodule "nats-server/nats-server"]
 	path = nats-server/nats-server
 	url = https://github.com/nats-io/nats-server
+[submodule "yazi/yazi"]
+	path = yazi/yazi
+	url = https://github.com/sxyazi/yazi
