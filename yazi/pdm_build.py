@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from pdm.backend.hooks import Context
 
 NAME = "yazi"
+YA = "ya"
 pwd = Path(__file__).parent
 with pwd.joinpath("pyproject.toml").open("rb") as f:
     pyproject = tomllib.load(f)
@@ -54,13 +55,13 @@ def build(output: str, target: str | None = None) -> None:
 
     suffix = ".exe" if is_windows(target) else ""
     yazi = Path(*output_path, f"{NAME}{suffix}")
-    ya = yazi.with_name(f"ya{suffix}")
+    ya = yazi.with_name(f"{YA}{suffix}")
 
     shutil.copy(yazi, Path(output).parent)
     shutil.copy(ya, Path(output).parent)
 
     Path(output).chmod(0o777)
-    Path(output).with_name(f"ya{suffix}").chmod(0o777)
+    Path(output).with_name(f"{YA}{suffix}").chmod(0o777)
 
 
 def pdm_build_hook_enabled(context: Context):
@@ -75,6 +76,12 @@ def pdm_build_initialize(context: Context) -> None:
 
     context.ensure_build_dir()
     output_path = Path(context.build_dir, "bin", NAME)
-    if is_windows():
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    if is_windows(target):
         output_path = output_path.with_suffix(".exe")
     build(str(output_path), target)
+
+
+def pdm_build_finalize(context: Context, artifact: Path) -> None:
+    if Path(context.build_dir).exists():
+        shutil.rmtree(context.build_dir)
