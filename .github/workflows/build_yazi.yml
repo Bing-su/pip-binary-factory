@@ -78,7 +78,8 @@ jobs:
             post-command: uvx wheel tags --remove --platform-tag win_arm64 dist/*.whl
 
     env:
-      VERGEN_GIT_SHA: "pypi"
+      CROSS_CONTAINER_OPTS: "-e VERGEN_GIT_SHA=pypi"
+      VERGEN_GIT_SHA: pypi
 
     steps:
       - uses: actions/checkout@v4
