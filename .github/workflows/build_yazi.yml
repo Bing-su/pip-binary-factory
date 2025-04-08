@@ -34,47 +34,47 @@ jobs:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-musl
             test: true
-            post-command: uvx wheel tags --remove --platform-tag manylinux_2_17_x86_64.manylinux2014_x86_64.musllinux_1_2_x86_64 yazi/dist/*.whl
+            post-command: uvx wheel tags --remove --platform-tag manylinux_2_17_x86_64.manylinux2014_x86_64.musllinux_1_2_x86_64 dist/*.whl
 
           - os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-musl
             test: true
-            post-command: uvx wheel tags --remove --platform-tag manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_2_aarch64 yazi/dist/*.whl
+            post-command: uvx wheel tags --remove --platform-tag manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_2_aarch64 dist/*.whl
 
           - os: ubuntu-24.04-arm
             target: aarch64-linux-android
             test: false
-            post-command: uvx wheel tags --remove --platform-tag android_21_arm64_v8a yazi/dist/*.whl
+            post-command: uvx wheel tags --remove --platform-tag android_21_arm64_v8a dist/*.whl
 
           - os: macos-latest
             target: x86_64-apple-darwin
             test: false
-            post-command: uvx wheel tags --remove --platform-tag macosx_10_12_x86_64 yazi/dist/*.whl
+            post-command: uvx wheel tags --remove --platform-tag macosx_10_12_x86_64 dist/*.whl
 
           - os: macos-latest
             target: aarch64-apple-darwin
             test: true
-            post-command: uvx wheel tags --remove --platform-tag macosx_11_0_arm64 yazi/dist/*.whl
+            post-command: uvx wheel tags --remove --platform-tag macosx_11_0_arm64 dist/*.whl
 
           - os: macos-latest
             target: aarch64-apple-ios
             test: false
-            post-command: uvx wheel tags --remove --platform-tag ios_12_0_arm64_iphoneos yazi/dist/*.whl
+            post-command: uvx wheel tags --remove --platform-tag ios_12_0_arm64_iphoneos dist/*.whl
 
           - os: macos-latest
             target: aarch64-apple-ios-sim
             test: false
-            post-command: uvx wheel tags --remove --platform-tag ios_12_0_arm64_iphonesimulator yazi/dist/*.whl
+            post-command: uvx wheel tags --remove --platform-tag ios_12_0_arm64_iphonesimulator dist/*.whl
 
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             test: true
-            post-command: uvx wheel tags --remove --platform-tag win_amd64 yazi/dist/*.whl
+            post-command: uvx wheel tags --remove --platform-tag win_amd64 dist/*.whl
 
           - os: windows-latest
             target: aarch64-pc-windows-msvc
             test: false
-            post-command: uvx wheel tags --remove --platform-tag win_arm64 yazi/dist/*.whl
+            post-command: uvx wheel tags --remove --platform-tag win_arm64 dist/*.whl
 
     steps:
       - uses: actions/checkout@v4
@@ -95,6 +95,7 @@ jobs:
         working-directory: ./yazi
 
       - name: Post Processing wheel
+        shell: bash
         run: |
           ${{ matrix.post-command }}
         working-directory: ./yazi
