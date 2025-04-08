@@ -1,7 +1,7 @@
 [project]
 name = "yazi-bin"
 description = "💥 Blazing fast terminal file manager written in Rust, based on async I/O."
-version = "25.3.2-pre.1"
+version = "25.3.2"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.7"
