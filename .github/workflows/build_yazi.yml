@@ -36,15 +36,16 @@ jobs:
             test: true
             post-command: uvx wheel tags --remove --platform-tag manylinux_2_17_x86_64.manylinux2014_x86_64.musllinux_1_2_x86_64 dist/*.whl
 
-          - os: ubuntu-24.04-arm
+          - os: ubuntu-latest
             target: aarch64-unknown-linux-musl
-            test: true
+            test: false
             post-command: uvx wheel tags --remove --platform-tag manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_2_aarch64 dist/*.whl
 
-          - os: ubuntu-24.04-arm
+          - os: ubuntu-latest
             target: aarch64-linux-android
             test: false
-            post-command: uvx wheel tags --remove --platform-tag android_21_arm64_v8a dist/*.whl
+            # https://github.com/cross-rs/cross/blob/main/docker/Dockerfile.aarch64-linux-android
+            post-command: uvx wheel tags --remove --platform-tag android_28_arm64_v8a dist/*.whl
 
           - os: macos-latest
             target: x86_64-apple-darwin
@@ -89,12 +90,15 @@ jobs:
           rustup target add ${{ matrix.target }}
           rustup target list --installed
 
-      - name: Install cross
+      - name: Install cross, setup submodule
         if: ${{ startsWith(matrix.os, 'ubuntu') }}
         run: |
           cargo install cross --git https://github.com/cross-rs/cross
 
           echo "CARGO=cross" >> $GITHUB_ENV
+
+          rm -rf yazi/yazi/.git
+          cp -r .git/modules/yazi/yazi yazi/yazi/.git
 
       - name: Build wheel ${{ matrix.target }}
         run: |
@@ -115,9 +119,8 @@ jobs:
           yazi --version
           ya --version
 
-          nohup yazi > yazi.log 2>&1 &
-          sleep 2
-          cat yazi.log
+          ya pack --list
+          yazi --debug
 
       - uses: actions/upload-artifact@v4
         with:

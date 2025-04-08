@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import shutil
 import subprocess
 import sys
@@ -33,6 +34,9 @@ def build(output: str, target: str | None = None) -> None:
     if cargo is None:
         msg = "rust toolchain is required and 'cargo' should be in $PATH"
         raise RuntimeError(msg)
+
+    if os.getenv("CARGO") == "cross" and shutil.which("cross") is not None:
+        cargo = shutil.which("cross")
 
     args = [
         cargo,
