@@ -1,0 +1,139 @@
+name: Build yazi
+
+on:
+  - workflow_dispatch
+
+jobs:
+  sdist:
+    name: sdist
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: git submodule update --init -- yazi/yazi
+      - uses: astral-sh/setup-uv@v5
+
+      - run: uv build --sdist
+        working-directory: ./yazi
+
+      - run: ls yazi/dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sdist
+          path: yazi/dist
+
+  build:
+    name: build-${{ matrix.target }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: x86_64-unknown-linux-musl
+            test: true
+            post-command: uvx wheel tags --remove --platform-tag manylinux_2_17_x86_64.manylinux2014_x86_64.musllinux_1_2_x86_64 yazi/dist/*.whl
+
+          - os: ubuntu-24.04-arm
+            target: aarch64-unknown-linux-musl
+            test: true
+            post-command: uvx wheel tags --remove --platform-tag manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_2_aarch64 yazi/dist/*.whl
+
+          - os: ubuntu-24.04-arm
+            target: aarch64-linux-android
+            test: false
+            post-command: uvx wheel tags --remove --platform-tag android_21_arm64_v8a yazi/dist/*.whl
+
+          - os: macos-latest
+            target: x86_64-apple-darwin
+            test: false
+            post-command: uvx wheel tags --remove --platform-tag macosx_10_12_x86_64 yazi/dist/*.whl
+
+          - os: macos-latest
+            target: aarch64-apple-darwin
+            test: true
+            post-command: uvx wheel tags --remove --platform-tag macosx_11_0_arm64 yazi/dist/*.whl
+
+          - os: macos-latest
+            target: aarch64-apple-ios
+            test: false
+            post-command: uvx wheel tags --remove --platform-tag ios_12_0_arm64_iphoneos yazi/dist/*.whl
+
+          - os: macos-latest
+            target: aarch64-apple-ios-sim
+            test: false
+            post-command: uvx wheel tags --remove --platform-tag ios_12_0_arm64_iphonesimulator yazi/dist/*.whl
+
+          - os: windows-latest
+            target: x86_64-pc-windows-msvc
+            test: true
+            post-command: uvx wheel tags --remove --platform-tag win_amd64 yazi/dist/*.whl
+
+          - os: windows-latest
+            target: aarch64-pc-windows-msvc
+            test: false
+            post-command: uvx wheel tags --remove --platform-tag win_arm64 yazi/dist/*.whl
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: git submodule update --init -- yazi/yazi
+      - uses: astral-sh/setup-uv@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - run: |
+          rustup update
+          rustup target add ${{ matrix.target }}
+          rustup target list --installed
+
+      - name: Build wheel ${{ matrix.target }}
+        run: |
+          uv build --wheel -C--cargo-target=${{ matrix.target }}
+        working-directory: ./yazi
+
+      - name: Post Processing wheel
+        run: |
+          ${{ matrix.post-command }}
+        working-directory: ./yazi
+
+      - name: Install wheel test
+        if: ${{ matrix.test }}
+        shell: bash
+        run: |
+          pip install --no-index -f yazi/dist/ yazi-bin
+          yazi --version
+          ya --version
+
+          nohup yazi -js > yazi.log 2>&1 &
+          sleep 2
+          cat yazi.log
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheel-${{ matrix.target }}-${{ github.run_attempt }}
+          path: yazi/dist
+
+      - run: ls yazi/dist
+
+  publish:
+    name: publish
+    runs-on: ubuntu-latest
+    needs: [sdist, build]
+    environment: publish
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+          path: dist
+
+      - run: ls -R dist
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist
+          repository-url: https://test.pypi.org/legacy/
