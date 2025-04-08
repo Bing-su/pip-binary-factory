@@ -56,15 +56,15 @@ jobs:
             test: true
             post-command: uvx wheel tags --remove --platform-tag macosx_11_0_arm64 dist/*.whl
 
-          - os: macos-latest
-            target: aarch64-apple-ios
-            test: false
-            post-command: uvx wheel tags --remove --platform-tag ios_12_0_arm64_iphoneos dist/*.whl
+          # - os: macos-latest
+          #   target: aarch64-apple-ios
+          #   test: false
+          #   post-command: uvx wheel tags --remove --platform-tag ios_12_0_arm64_iphoneos dist/*.whl
 
-          - os: macos-latest
-            target: aarch64-apple-ios-sim
-            test: false
-            post-command: uvx wheel tags --remove --platform-tag ios_12_0_arm64_iphonesimulator dist/*.whl
+          # - os: macos-latest
+          #   target: aarch64-apple-ios-sim
+          #   test: false
+          #   post-command: uvx wheel tags --remove --platform-tag ios_12_0_arm64_iphonesimulator dist/*.whl
 
           - os: windows-latest
             target: x86_64-pc-windows-msvc
@@ -89,6 +89,13 @@ jobs:
           rustup target add ${{ matrix.target }}
           rustup target list --installed
 
+      - name: Install cross
+        if: ${{ startsWith(matrix.os, 'ubuntu') }}
+        run: |
+          cargo install cross --git https://github.com/cross-rs/cross
+
+          echo "CARGO=cross" >> $GITHUB_ENV
+
       - name: Build wheel ${{ matrix.target }}
         run: |
           uv build --wheel -C--cargo-target=${{ matrix.target }}
@@ -100,7 +107,7 @@ jobs:
           ${{ matrix.post-command }}
         working-directory: ./yazi
 
-      - name: Install wheel test
+      - name: Test wheel
         if: ${{ matrix.test }}
         shell: bash
         run: |
@@ -108,7 +115,7 @@ jobs:
           yazi --version
           ya --version
 
-          nohup yazi -js > yazi.log 2>&1 &
+          nohup yazi > yazi.log 2>&1 &
           sleep 2
           cat yazi.log
 
