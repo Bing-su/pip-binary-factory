@@ -52,7 +52,7 @@ def main():
     matrix = [
         ("windows", "amd64", "win_amd64"),
         ("windows", "arm64", "win_arm64"),
-        ("darwin", "amd64", "macosx_10_7_x86_64"),
+        ("darwin", "amd64", "macosx_11_0_x86_64"),
         ("darwin", "arm64", "macosx_11_0_arm64"),
         ("linux", "amd64", "manylinux2014_x86_64"),
         ("linux", "arm64", "manylinux2014_aarch64"),
