@@ -19,3 +19,6 @@
 [submodule "yazi/yazi"]
 	path = yazi/yazi
 	url = https://github.com/sxyazi/yazi
+[submodule "seaweedfs/seaweedfs"]
+	path = seaweedfs/seaweedfs
+	url = https://github.com/seaweedfs/seaweedfs
