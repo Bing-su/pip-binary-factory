@@ -1,0 +1,57 @@
+name: Build seaweedfs
+
+on:
+  - workflow_dispatch
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: git submodule update --init -- seaweedfs/seaweedfs
+      - uses: astral-sh/setup-uv@v5
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "stable"
+
+      - run: uv run build_wheel.py
+        working-directory: ./seaweedfs
+      - run: uv build --sdist
+        working-directory: ./seaweedfs
+
+      - run: |
+          uv pip install --system --no-index -f seaweedfs/dist/ seaweedfs-bin
+          seaweedfs --version
+
+          nohup weed server -dir=. -s3 > log.log 2>&1 &
+          sleep 2
+          cat log.log
+
+      - uses: actions/upload-artifact@v4
+        with:
+          path: seaweedfs/dist
+
+      - run: ls seaweedfs/dist
+
+  publish:
+    name: publish
+    runs-on: ubuntu-latest
+    needs: [build]
+    environment: publish
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: artifact
+          path: dist
+
+      - run: ls -R dist
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist
