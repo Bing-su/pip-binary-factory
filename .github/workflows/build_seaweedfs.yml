@@ -12,6 +12,9 @@ jobs:
       - uses: actions/checkout@v4
       - run: git submodule update --init -- seaweedfs/seaweedfs
       - uses: astral-sh/setup-uv@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
       - uses: actions/setup-go@v5
         with:
           go-version: "stable"
@@ -23,7 +26,7 @@ jobs:
 
       - run: |
           uv pip install --system --no-index -f seaweedfs/dist/ seaweedfs-bin
-          seaweedfs --version
+          weed version
 
           nohup weed server -dir=. -s3 > log.log 2>&1 &
           sleep 2

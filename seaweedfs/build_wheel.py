@@ -19,6 +19,7 @@ def build(os_: str, arch: str, platform: str):
         "uv",
         "build",
         "--wheel",
+        "--config-setting=--seaweedfs-tags=sqlite",
         f"--config-setting=--plat-name={platform}",
     ]
 
@@ -48,7 +49,6 @@ def main():
     matrix = [
         ("windows", "amd64", "win_amd64"),
         ("windows", "arm64", "win_arm64"),
-        ("darwin", "amd64", "macosx_11_0_x86_64"),
         ("darwin", "arm64", "macosx_11_0_arm64"),
         ("linux", "amd64", "manylinux2014_x86_64"),
         ("linux", "arm64", "manylinux2014_aarch64"),
