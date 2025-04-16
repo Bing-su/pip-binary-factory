@@ -18,8 +18,7 @@ jobs:
         with:
           go-version: "stable"
 
-      - run: uv pip install --system "build[virtualenv]" wheel
-      - run: python build_wheel.py
+      - run: uv run build_wheel.py
         working-directory: ./pocketbase
       - run: uv build --sdist
         working-directory: ./pocketbase
