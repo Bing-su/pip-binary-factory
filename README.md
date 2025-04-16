@@ -2,36 +2,37 @@
 
 binary package with pip install
 
-- micro: https://github.com/zyedidia/micro  [![Go project version](https://badge.fury.io/go/github.com%2Fzyedidia%2Fmicro%2Fv2.svg)](https://badge.fury.io/go/github.com%2Fzyedidia%2Fmicro%2Fv2)
-- eget: https://github.com/zyedidia/eget  [![Go project version](https://badge.fury.io/go/github.com%2Fzyedidia%2Feget.svg)](https://badge.fury.io/go/github.com%2Fzyedidia%2Feget)
-- lazygit: https://github.com/jesseduffield/lazygit  [![Go project version](https://badge.fury.io/go/github.com%2Fjesseduffield%2Flazygit.svg)](https://badge.fury.io/go/github.com%2Fjesseduffield%2Flazygit)
-- fzf: https://github.com/junegunn/fzf  [![Go project version](https://badge.fury.io/go/github.com%2Fjunegunn%2Ffzf.svg)](https://badge.fury.io/go/github.com%2Fjunegunn%2Ffzf)
-- task: https://taskfile.dev, https://github.com/go-task/task  [![Go project version](https://badge.fury.io/go/github.com%2Fgo-task%2Ftask%2Fv3.svg)](https://badge.fury.io/go/github.com%2Fgo-task%2Ftask%2Fv3)
-- zig: https://ziglang.org, https://github.com/ziglang/zig  [![GitHub version](https://badge.fury.io/gh/ziglang%2Fzig.svg)](https://badge.fury.io/gh/ziglang%2Fzig)
-- pocketbase: https://pocketbase.io, https://github.com/pocketbase/pocketbase  [![Go project version](https://badge.fury.io/go/github.com%2Fpocketbase%2Fpocketbase.svg)](https://badge.fury.io/go/github.com%2Fpocketbase%2Fpocketbase)
-- act: https://nektosact.com, https://github.com/nektos/act  [![Go project version](https://badge.fury.io/go/github.com%2Fnektos%2Fact.svg)](https://badge.fury.io/go/github.com%2Fnektos%2Fact)
-- nats-server: https://nats.io, https://github.com/nats-io/nats-server  [![Go project version](https://badge.fury.io/go/github.com%2Fnats-io%2Fnats-server%2Fv2.svg)](https://badge.fury.io/go/github.com%2Fnats-io%2Fnats-server%2Fv2)
-- yazi: https://github.com/sxyazi/yazi  [![GitHub version](https://badge.fury.io/gh/sxyazi%2Fyazi.svg)](https://badge.fury.io/gh/sxyazi%2Fyazi)
-- seaweedfs: https://github.com/seaweedfs/seaweedfs
+| package         | url                                                                | version                                                                                                                     | pip version                                                                                               |
+| --------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| micro-editor    | https://github.com/zyedidia/micro                                  | [![GitHub version](https://badge.fury.io/gh/zyedidia%2Fmicro.svg)](https://badge.fury.io/gh/zyedidia%2Fmicro)               | [![PyPI version](https://badge.fury.io/py/micro-editor.svg)](https://badge.fury.io/py/micro-editor)       |
+| eget-py         | https://github.com/zyedidia/eget                                   | [![GitHub version](https://badge.fury.io/gh/zyedidia%2Feget.svg)](https://badge.fury.io/gh/zyedidia%2Feget)                 | [![PyPI version](https://badge.fury.io/py/eget-py.svg)](https://badge.fury.io/py/eget-py)                 |
+| lazygit-py      | https://github.com/jesseduffield/lazygit                           | [![GitHub version](https://badge.fury.io/gh/jesseduffield%2Flazygit.svg)](https://badge.fury.io/gh/jesseduffield%2Flazygit) | [![PyPI version](https://badge.fury.io/py/lazygit-py.svg)](https://badge.fury.io/py/lazygit-py)           |
+| fzf-bin         | https://github.com/junegunn/fzf                                    | [![GitHub version](https://badge.fury.io/gh/junegunn%2Ffzf.svg)](https://badge.fury.io/gh/junegunn%2Ffzf)                   | [![PyPI version](https://badge.fury.io/py/fzf-bin.svg)](https://badge.fury.io/py/fzf-bin)                 |
+| go-task-bin     | https://taskfile.dev<br/>https://github.com/go-task/task           | [![GitHub version](https://badge.fury.io/gh/go-task%2Ftask.svg)](https://badge.fury.io/gh/go-task%2Ftask)                   | [![PyPI version](https://badge.fury.io/py/go-task-bin.svg)](https://badge.fury.io/py/go-task-bin)         |
+| zig-bin         | https://ziglang.org<br/>https://github.com/ziglang/zig             | [![GitHub version](https://badge.fury.io/gh/ziglang%2Fzig.svg)](https://badge.fury.io/gh/ziglang%2Fzig)                     | [![PyPI version](https://badge.fury.io/py/zig-bin.svg)](https://badge.fury.io/py/zig-bin)                 |
+| pocketbase-bin  | https://pocketbase.io<br/>https://github.com/pocketbase/pocketbase | [![GitHub version](https://badge.fury.io/gh/pocketbase%2Fpocketbase.svg)](https://badge.fury.io/gh/pocketbase%2Fpocketbase) | [![PyPI version](https://badge.fury.io/py/pocketbase-bin.svg)](https://badge.fury.io/py/pocketbase-bin)   |
+| act-bin         | https://nektosact.com<br/>https://github.com/nektos/act            | [![GitHub version](https://badge.fury.io/gh/nektos%2Fact.svg)](https://badge.fury.io/gh/nektos%2Fact)                       | [![PyPI version](https://badge.fury.io/py/act-bin.svg)](https://badge.fury.io/py/act-bin)                 |
+| nats-server-bin | https://nats.io<br/>https://github.com/nats-io/nats-server         | [![GitHub version](https://badge.fury.io/gh/nats-io%2Fnats-server.svg)](https://badge.fury.io/gh/nats-io%2Fnats-server)     | [![PyPI version](https://badge.fury.io/py/nats-server-bin.svg)](https://badge.fury.io/py/nats-server-bin) |
+| yazi-bin        | https://github.com/sxyazi/yazi                                     | [![GitHub version](https://badge.fury.io/gh/sxyazi%2Fyazi.svg)](https://badge.fury.io/gh/sxyazi%2Fyazi)                     | [![PyPI version](https://badge.fury.io/py/yazi-bin.svg)](https://badge.fury.io/py/yazi-bin)               |
+| seaweedfs-bin   | https://github.com/seaweedfs/seaweedfs                             |                                                                                                                             | [![PyPI version](https://badge.fury.io/py/seaweedfs-bin.svg)](https://badge.fury.io/py/seaweedfs-bin)     |
+
 
 ## pipx, uv
 
 To install the packages listed above using pipx or uv, you can use the following commands:
 
-
-| package            | pipx                           | uv                                | binary name   |
-|--------------------|--------------------------------|-----------------------------------|---------------|
-| micro-editor       | `pipx install micro-editor`    | `uv tool install micro-editor`    | micro         |
-| eget-py            | `pipx install eget-py`         | `uv tool install eget-py`         | eget          |
-| lazygit-py         | `pipx install lazygit-py`      | `uv tool install lazygit-py`      | lazygit       |
-| fzf-bin            | `pipx install fzf-bin`         | `uv tool install fzf-bin`         | fzf           |
-| go-task-bin        | `pipx install go-task-bin`     | `uv tool install go-task-bin`     | task          |
-| zig-bin            | `pipx install zig-bin`         | `uv tool install zig-bin`         | zig           |
-| pocketbase-bin     | `pipx install pocketbase-bin`  | `uv tool install pocketbase-bin`  | pocketbase    |
-| act-bin            | `pipx install act-bin`         | `uv tool install act-bin`         | act           |
-| nats-server-bin    | `pipx install nats-server-bin` | `uv tool install nats-server-bin` | nats-server   |
-| yazi-bin           | `pipx install yazi-bin`        | `uv tool install yazi-bin`        | yazi, ya      |
-| seaweedfs-bin      | `pipx install seaweedfs-bin`   | `uv tool install seaweedfs-bin`   | weed          |
-
+| package         | pipx                           | uv                                | binary name |
+| --------------- | ------------------------------ | --------------------------------- | ----------- |
+| micro-editor    | `pipx install micro-editor`    | `uv tool install micro-editor`    | micro       |
+| eget-py         | `pipx install eget-py`         | `uv tool install eget-py`         | eget        |
+| lazygit-py      | `pipx install lazygit-py`      | `uv tool install lazygit-py`      | lazygit     |
+| fzf-bin         | `pipx install fzf-bin`         | `uv tool install fzf-bin`         | fzf         |
+| go-task-bin     | `pipx install go-task-bin`     | `uv tool install go-task-bin`     | task        |
+| zig-bin         | `pipx install zig-bin`         | `uv tool install zig-bin`         | zig         |
+| pocketbase-bin  | `pipx install pocketbase-bin`  | `uv tool install pocketbase-bin`  | pocketbase  |
+| act-bin         | `pipx install act-bin`         | `uv tool install act-bin`         | act         |
+| nats-server-bin | `pipx install nats-server-bin` | `uv tool install nats-server-bin` | nats-server |
+| yazi-bin        | `pipx install yazi-bin`        | `uv tool install yazi-bin`        | yazi, ya    |
+| seaweedfs-bin   | `pipx install seaweedfs-bin`   | `uv tool install seaweedfs-bin`   | weed        |
 
 Please note that you need to have pipx or uv installed on your system before running these commands.
