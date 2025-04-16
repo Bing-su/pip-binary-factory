@@ -12,6 +12,7 @@ binary package with pip install
 - act: https://nektosact.com, https://github.com/nektos/act  [![Go project version](https://badge.fury.io/go/github.com%2Fnektos%2Fact.svg)](https://badge.fury.io/go/github.com%2Fnektos%2Fact)
 - nats-server: https://nats.io, https://github.com/nats-io/nats-server  [![Go project version](https://badge.fury.io/go/github.com%2Fnats-io%2Fnats-server%2Fv2.svg)](https://badge.fury.io/go/github.com%2Fnats-io%2Fnats-server%2Fv2)
 - yazi: https://github.com/sxyazi/yazi  [![GitHub version](https://badge.fury.io/gh/sxyazi%2Fyazi.svg)](https://badge.fury.io/gh/sxyazi%2Fyazi)
+- seaweedfs: https://github.com/seaweedfs/seaweedfs
 
 ## pipx, uv
 
@@ -30,5 +31,7 @@ To install the packages listed above using pipx or uv, you can use the following
 | act-bin            | `pipx install act-bin`         | `uv tool install act-bin`         | act           |
 | nats-server-bin    | `pipx install nats-server-bin` | `uv tool install nats-server-bin` | nats-server   |
 | yazi-bin           | `pipx install yazi-bin`        | `uv tool install yazi-bin`        | yazi, ya      |
+| seaweedfs-bin      | `pipx install seaweedfs-bin`   | `uv tool install seaweedfs-bin`   | weed          |
+
 
 Please note that you need to have pipx or uv installed on your system before running these commands.
