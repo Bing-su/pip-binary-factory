@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from pdm.backend.hooks import Context
 
 NAME = "fzf"
-VERSION = "0.61.1"
+VERSION = "0.61.2"
 
 
 def is_windows():
@@ -25,6 +25,8 @@ def build(output: str) -> None:
     if go is None:
         msg = "golang is required and 'go' should be in $PATH"
         raise RuntimeError(msg)
+
+    os.environ.setdefault("CGO_ENABLED", "0")
 
     args = [
         go,

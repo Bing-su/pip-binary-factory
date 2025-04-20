@@ -14,19 +14,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
+      - uses: astral-sh/setup-uv@v5
       - uses: actions/setup-go@v5
         with:
           go-version: "stable"
 
-      - run: pip install build[virtualenv] wheel
-      - run: python build_wheel.py
+      - run: uv run build_wheel.py
         working-directory: ./fzf
-      - run: python -m build -s
+      - run: uv build --sdist
         working-directory: ./fzf
 
       - run: |
-          pip install --no-index -f fzf/dist/ fzf-bin
+          uv pip install --system --no-index -f fzf/dist/ fzf-bin
           fzf --version
+
+          nohup fzf > log.log 2>&1 &
+          sleep 2
+          cat log.log
 
       - uses: actions/upload-artifact@v4
         with:
