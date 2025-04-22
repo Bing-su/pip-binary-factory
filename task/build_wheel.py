@@ -1,3 +1,9 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#     "wheel",
+# ]
+# ///
 import os
 import subprocess
 import sys
@@ -10,10 +16,9 @@ def build(os_: str, arch: str, platform: str):
     os.environ["CGO_ENABLED"] = "0"
 
     args = [
-        sys.executable,
-        "-m",
+        "uv",
         "build",
-        "-w",
+        "--wheel",
         f"--config-setting=--plat-name={platform}",
     ]
 
@@ -31,12 +36,12 @@ def build(os_: str, arch: str, platform: str):
         "-m",
         "wheel",
         "tags",
+        "--remove",
         "--platform-tag",
         f"manylinux_2_17_{arch}.manylinux2014_{arch}.musllinux_1_1_{arch}",
         str(whl),
     ]
     subprocess.run(args, check=True)
-    whl.unlink()
 
 
 def main():
