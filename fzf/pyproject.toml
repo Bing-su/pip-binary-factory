@@ -1,7 +1,7 @@
 [project]
 name = "fzf-bin"
 description = "fzf - 🌸 A command-line fuzzy finder"
-version = "0.61.2"
+version = "0.61.3"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.7"
@@ -18,7 +18,7 @@ classifiers = [
 repository = "https://github.com/Bing-su/pip-binary-factory"
 
 [build-system]
-requires = ["pdm-backend"]
+requires = ["pdm-backend", "tomli; python_version < '3.11'"]
 build-backend = "pdm.backend"
 
 [tool.pdm.build]

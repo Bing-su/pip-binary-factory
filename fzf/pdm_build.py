@@ -7,11 +7,19 @@ import sys
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+try:
+    import tomllib
+except ImportError:
+    import tomli as tomllib
+
 if TYPE_CHECKING:
     from pdm.backend.hooks import Context
 
 NAME = "fzf"
-VERSION = "0.61.2"
+pwd = Path(__file__).parent
+with pwd.joinpath("pyproject.toml").open("rb") as f:
+    pyproject = tomllib.load(f)
+VERSION: str = pyproject["project"]["version"]
 
 
 def is_windows():
