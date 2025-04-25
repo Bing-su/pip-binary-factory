@@ -1,21 +1,14 @@
 [project]
 name = "nats-server-bin"
 description = "High-Performance server for NATS.io, the cloud and edge native messaging system."
-version = "2.11.1"
+version = "2.11.2"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.7"
 readme = "README.md"
 license = { text = "Apache-2.0" }
-keywords = [
-    "nats",
-    "messaging",
-    "queue",
-]
-classifiers = [
-    "Programming Language :: Go",
-    "Topic :: System :: Networking",
-]
+keywords = ["nats", "messaging", "queue"]
+classifiers = ["Programming Language :: Go", "Topic :: System :: Networking"]
 
 [project.urls]
 repository = "https://github.com/Bing-su/pip-binary-factory"
