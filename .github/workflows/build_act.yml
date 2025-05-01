@@ -18,14 +18,13 @@ jobs:
         with:
           go-version: "stable"
 
-      - run: uv pip install --system "build[virtualenv]" wheel
-      - run: python build_wheel.py
+      - run: uv run build_wheel.py
         working-directory: ./act
-      - run: python -m build -s
+      - run: uv build --sdist
         working-directory: ./act
 
       - run: |
-          pip install --no-index -f act/dist/ act-bin
+          uv pip install --system --no-index -f act/dist/ act-bin
           act --version
 
           act --list

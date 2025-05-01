@@ -1,3 +1,9 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#     "wheel",
+# ]
+# ///
 import os
 import subprocess
 import sys
@@ -15,12 +21,9 @@ def build(os_: str, arch: str, platform: str):
     os.environ["CGO_ENABLED"] = "0"
 
     args = [
-        sys.executable,
-        "-m",
-        "build",
-        "-w",
-        "--installer",
         "uv",
+        "build",
+        "--wheel",
         f"--config-setting=--plat-name={platform}",
     ]
 

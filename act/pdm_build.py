@@ -39,6 +39,8 @@ def build(output: str) -> None:
     version_file = cwd.joinpath("VERSION")
     version_file.write_text(VERSION, encoding="utf-8")
 
+    os.environ.setdefault("CGO_ENABLED", "0")
+
     args = [
         go,
         "build",
