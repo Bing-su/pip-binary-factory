@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: git submodule update --init -- lazygit/lazygit
+      - uses: astral-sh/setup-uv@v6
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
@@ -18,14 +19,13 @@ jobs:
         with:
           go-version: "stable"
 
-      - run: pip install build[virtualenv] wheel
-      - run: python build_wheel.py
+      - run: uv run build_wheel.py
         working-directory: ./lazygit
-      - run: python -m build -s
+      - run: uv build --sdist
         working-directory: ./lazygit
 
       - run: |
-          pip install --no-index -f lazygit/dist/ lazygit-py
+          uv pip install --system --no-index -f lazygit/dist/ lazygit-py
           which lazygit
           lazygit --version
 
