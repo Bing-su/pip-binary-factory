@@ -19,7 +19,7 @@ def build(os_: str, arch: str, platform: str):
         "uv",
         "build",
         "--wheel",
-        "--config-setting=--seaweedfs-tags=sqlite",
+        "--config-setting=--seaweedfs-tags=5BytesOffset,sqlite",
         f"--config-setting=--plat-name={platform}",
     ]
 

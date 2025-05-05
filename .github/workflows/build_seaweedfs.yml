@@ -28,7 +28,8 @@ jobs:
           uv pip install --system --no-index -f seaweedfs/dist/ seaweedfs-bin
           weed version
 
-          nohup weed server -dir=. -s3 > log.log 2>&1 &
+          mkdir -p ./data123
+          nohup weed server -master.port=49333 -volume.port=48080 -dir="./data123" -s3 > log.log 2>&1 &
           sleep 2
           cat log.log
 
