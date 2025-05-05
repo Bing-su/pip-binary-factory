@@ -36,6 +36,8 @@ jobs:
         with:
           path: fzf/dist
 
+      - run: ls fzf/dist
+
   publish:
     name: publish
     runs-on: ubuntu-latest
