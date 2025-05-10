@@ -57,24 +57,14 @@ jobs:
             test: true
             post-command: uvx wheel tags --remove --platform-tag macosx_11_0_arm64 dist/*.whl
 
-          # - os: macos-latest
-          #   target: aarch64-apple-ios
-          #   test: false
-          #   post-command: uvx wheel tags --remove --platform-tag ios_12_0_arm64_iphoneos dist/*.whl
-
-          # - os: macos-latest
-          #   target: aarch64-apple-ios-sim
-          #   test: false
-          #   post-command: uvx wheel tags --remove --platform-tag ios_12_0_arm64_iphonesimulator dist/*.whl
-
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             test: true
             post-command: uvx wheel tags --remove --platform-tag win_amd64 dist/*.whl
 
-          - os: windows-latest
+          - os: windows-11-arm
             target: aarch64-pc-windows-msvc
-            test: false
+            test: true
             post-command: uvx wheel tags --remove --platform-tag win_arm64 dist/*.whl
 
     env:
@@ -89,10 +79,9 @@ jobs:
         with:
           python-version: "3.x"
 
-      - run: |
-          rustup update
-          rustup target add ${{ matrix.target }}
-          rustup target list --installed
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
 
       - name: Install cross
         if: ${{ startsWith(matrix.os, 'ubuntu') }}
