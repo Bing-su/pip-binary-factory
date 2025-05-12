@@ -22,3 +22,6 @@
 [submodule "seaweedfs/seaweedfs"]
 	path = seaweedfs/seaweedfs
 	url = https://github.com/seaweedfs/seaweedfs
+[submodule "juicefs/juicefs"]
+	path = juicefs/juicefs
+	url = https://github.com/juicedata/juicefs

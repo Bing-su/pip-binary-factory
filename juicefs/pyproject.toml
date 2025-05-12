@@ -1,0 +1,61 @@
+[project]
+name = "juicefs-bin"
+description = "🍹JuiceFS is a distributed POSIX file system built on top of Redis and S3."
+version = "1.3.0-beta1"
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
+dependencies = []
+requires-python = ">=3.7"
+readme = "README.md"
+license = { text = "Apache 2.0" }
+keywords = [
+    "juicefs",
+    "distributed storage",
+    "distributed file system",
+    "s3",
+    "redis",
+    "filesystem",
+    "posix",
+    "hdfs",
+    "object storage",
+]
+classifiers = ["Programming Language :: Go", "Topic :: System :: Filesystems"]
+
+[project.urls]
+repository = "https://github.com/Bing-su/pip-binary-factory"
+juicefs = "https://github.com/juicedata/juicefs"
+
+[build-system]
+requires = ["pdm-backend", "tomli; python_version < '3.11'"]
+build-backend = "pdm.backend"
+
+[tool.pdm.build]
+is-purelib = false
+source-includes = ["juicefs/"]
+excludes = ["bin/*", ".gitignore", "*.py"]
+
+[tool.pdm.build.wheel-data]
+scripts = ["${BUILD_DIR}/bin/*"]
+
+[tool.ruff]
+select = [
+    "A",
+    "B",
+    "C4",
+    "C90",
+    "E",
+    "EM",
+    "F",
+    "FA",
+    "I001",
+    "ISC",
+    "N",
+    "PIE",
+    "PT",
+    "RET",
+    "RUF",
+    "SIM",
+    "UP",
+    "W",
+]
+ignore = ["B008", "B905", "E501"]
+unfixable = ["F401"]
