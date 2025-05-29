@@ -15,31 +15,30 @@ jobs:
             flags: "--features=native-tls --zig --auditwheel repair"
           - os: ubuntu-latest
             target: x86_64-unknown-linux-musl
-            flags: "--zig"
+            flags: ""
           - os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-gnu
             flags: "--features=native-tls --zig --auditwheel repair"
           - os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-musl
-            flags: "--zig"
+            flags: ""
           - os: macos-latest
             target: x86_64-apple-darwin
-            flags: "--features=native-tls --zig"
+            flags: "--features=native-tls"
           - os: macos-latest
             target: aarch64-apple-darwin
-            flags: "--features=native-tls --zig"
+            flags: "--features=native-tls"
           - os: windows-latest
             target: x86_64-pc-windows-msvc
-            flags: "--features=native-tls --zig"
+            flags: "--features=native-tls"
           - os: windows-11-arm
             target: aarch64-pc-windows-msvc
-            flags: "--features=native-tls --zig"
+            flags: "--features=native-tls"
 
     steps:
       - uses: actions/checkout@v4
       - run: git submodule update --init -- xh/xh
       - uses: dtolnay/rust-toolchain@stable
-      - uses: mlugg/setup-zig@v2
       - uses: KyleMayes/install-llvm-action@v2
         with:
           version: "20"
@@ -53,6 +52,18 @@ jobs:
           working-directory: ./xh
 
       - run: ls -R xh/dist
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install test
+        run: |-
+          pip install --no-index -f xh/dist/ xh-bin
+          which xh
+          xh --version
+
+          xh https://httpbin.org/json
 
       - uses: actions/upload-artifact@v4
         with:
