@@ -24,6 +24,7 @@ requires = ["maturin>=1.8,<2.0"]
 build-backend = "maturin"
 
 [tool.maturin]
+include = [{ path = "LICENSE", format = "sdist" }]
 bindings = "bin"
 manifest-path = "xh/Cargo.toml"
 auditwheel = "repair"
