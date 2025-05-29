@@ -23,9 +23,6 @@ jobs:
             target: aarch64-unknown-linux-musl
             flags: ""
           - os: macos-latest
-            target: x86_64-apple-darwin
-            flags: "--features=native-tls"
-          - os: macos-latest
             target: aarch64-apple-darwin
             flags: "--features=native-tls"
           - os: windows-latest
