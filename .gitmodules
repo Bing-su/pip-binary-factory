@@ -25,3 +25,6 @@
 [submodule "juicefs/juicefs"]
 	path = juicefs/juicefs
 	url = https://github.com/juicedata/juicefs
+[submodule "xh/xh"]
+	path = xh/xh
+	url = https://github.com/ducaale/xh
