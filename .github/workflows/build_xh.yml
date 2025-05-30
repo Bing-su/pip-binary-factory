@@ -7,17 +7,20 @@ jobs:
   wheel:
     name: build-${{ matrix.os }}-${{ matrix.target }}
     runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: nu {0}
     strategy:
       fail-fast: false
       matrix:
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-musl
-            flags: ""
+            flags: "--features=native-tls --zig"
             tag: manylinux_2_17_x86_64.manylinux2014_x86_64.musllinux_1_2_x86_64
           - os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-musl
-            flags: ""
+            flags: "--features=native-tls --zig"
             tag: manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_2_aarch64
           - os: macos-13
             target: x86_64-apple-darwin
@@ -35,6 +38,7 @@ jobs:
             rustflags: -C target-feature=+crt-static
 
     steps:
+      - uses: hustcer/setup-nu@v3
       - uses: actions/checkout@v4
       - run: git submodule update --init -- xh/xh
       - uses: actions/setup-python@v5
@@ -49,6 +53,12 @@ jobs:
         if: matrix.rustflags
         shell: bash
         run: echo "RUSTFLAGS=${{ matrix.rustflags }}" >> $GITHUB_ENV
+
+      - name: Fix native-tls
+        if: runner.os == 'Linux'
+        working-directory: ./xh/xh
+        run: |
+          cargo add native-tls --features vendored,alpn
 
       - uses: PyO3/maturin-action@v1
         with:
@@ -67,7 +77,7 @@ jobs:
           uvx wheel tags --remove --platform-tag ${{ matrix.tag }} dist/*.whl
         working-directory: ./xh
 
-      - run: ls -R xh/dist
+      - run: ls xh/dist
 
       - name: Install test
         run: |-
@@ -75,7 +85,10 @@ jobs:
           which xh
           xh --version
 
+          do -i { objdump -T (which xh | get path.0) }
+
           xh -I POST https://httpbingo.org/post foo=bar
+          xh -I --native-tls POST https://httpbingo.org/post native=tls
 
       - uses: actions/upload-artifact@v4
         with:
