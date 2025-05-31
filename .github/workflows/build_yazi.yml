@@ -109,7 +109,7 @@ jobs:
           yazi --version
           ya --version
 
-          ya pack --list
+          ya pkg list
           yazi --debug
 
       - uses: actions/upload-artifact@v4
