@@ -70,3 +70,8 @@ def pdm_build_initialize(context: Context) -> None:
     if is_windows():
         output_path = output_path.with_suffix(".exe")
     build(str(output_path))
+
+
+def pdm_build_finalize(context: Context, artifact: Path) -> None:
+    if Path(context.build_dir).exists():
+        shutil.rmtree(context.build_dir)
