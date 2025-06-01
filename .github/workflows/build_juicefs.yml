@@ -74,7 +74,7 @@ jobs:
           mkdir ${{ github.workspace }}/include_
           cp -r ./juicefs/juicefs/hack/winfsp_headers/* ${{ github.workspace }}/include_
 
-      - name: Build wheel ${{ matrix.os }}
+      - name: Build wheel non-Windows
         if: runner.os != 'Windows'
         run: |
           uv build --wheel
@@ -83,7 +83,7 @@ jobs:
           CC: ${{ matrix.cc }}
           CGO_ENABLED: "1"
 
-      - name: Build wheel ${{ matrix.os }}
+      - name: Build wheel Windows
         if: runner.os == 'Windows'
         run: |
           uv build --wheel
@@ -108,10 +108,7 @@ jobs:
 
           do -i { objdump -T (which juicefs | get path.0) }
 
-          job spawn { juicefs format sqlite3://myjfs.db myjfs o+e> log.txt }
-          sleep 2sec
-
-          open log.txt
+          juicefs format sqlite3://myjfs.db myjfs
 
       - uses: actions/upload-artifact@v4
         with:
