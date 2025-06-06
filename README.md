@@ -16,7 +16,7 @@ binary package with pip install
 | yazi-bin        | https://github.com/sxyazi/yazi                                     | [![GitHub version](https://badge.fury.io/gh/sxyazi%2Fyazi.svg)](https://badge.fury.io/gh/sxyazi%2Fyazi)                     | [![PyPI version](https://badge.fury.io/py/yazi-bin.svg)](https://badge.fury.io/py/yazi-bin)               |
 | seaweedfs-bin   | https://github.com/seaweedfs/seaweedfs                             | ![GitHub Release](https://img.shields.io/github/v/release/seaweedfs/seaweedfs)                                              | [![PyPI version](https://badge.fury.io/py/seaweedfs-bin.svg)](https://badge.fury.io/py/seaweedfs-bin)     |
 | juicefs-bin     | https://juicefs.com<br/>https://github.com/juicedata/juicefs       | [![GitHub version](https://badge.fury.io/gh/juicedata%2Fjuicefs.svg)](https://badge.fury.io/gh/juicedata%2Fjuicefs)         | [![PyPI version](https://badge.fury.io/py/juicefs-bin.svg)](https://badge.fury.io/py/juicefs-bin)         |
-
+| xh-bin          | https://github.com/ducaale/xh                                      | [![GitHub version](https://badge.fury.io/gh/ducaale%2Fxh.svg)](https://badge.fury.io/gh/ducaale%2Fxh)                       | [![PyPI version](https://badge.fury.io/py/xh-bin.svg)](https://badge.fury.io/py/xh-bin)                   |
 
 ## pipx, uv
 
@@ -36,5 +36,6 @@ To install the packages listed above using pipx or uv, you can use the following
 | yazi-bin        | `pipx install yazi-bin`        | `uv tool install yazi-bin`        | yazi<br/>ya |
 | seaweedfs-bin   | `pipx install seaweedfs-bin`   | `uv tool install seaweedfs-bin`   | weed        |
 | juicefs-bin     | `pipx install juicefs-bin`     | `uv tool install juicefs-bin`     | juicefs     |
+| xh-bin          | `pipx install xh-bin`          | `uv tool install xh-bin`          | xh          |
 
 Please note that you need to have pipx or uv installed on your system before running these commands.
