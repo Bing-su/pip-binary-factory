@@ -4,30 +4,27 @@ https://github.com/go-task/task
 
 https://taskfile.dev/
 
-**Task** is a task runner / build tool that aims to be simpler and easier to use than, for example, [GNU Make](https://www.gnu.org/software/make/).
+<div align="center">
+  <img id="logo" src="https://taskfile.dev/img/logo.svg" height="250px" width="250px" />
+</div>
+<br />
 
-Since it's written in Go, Task is just a single binary and has no other dependencies, which means you don't need to mess with any complicated install setups just to use a build tool.
+Task is a task runner / build tool that aims to be simpler and easier to use than, for example, [GNU Make](https://www.gnu.org/software/make/).
 
-Once [installed](https://taskfile.dev/installation/), you just need to describe your build tasks using a simple [YAML](http://yaml.org/) schema in a file called Taskfile.yml:
+Since it's written in [Go](https://go.dev/), Task is just a single binary and has no other dependencies, which means you don't need to mess with any complicated install setups just to use a build tool.
 
-```yaml
-Taskfile.yaml
----
-version: '3'
+## Features
 
-tasks:
-  hello:
-    cmds:
-      - echo 'Hello World from Task!'
-    silent: true
-```
+- [Easy installation](https://taskfile.dev/installation): just download a single binary, add to `$PATH` and you're done! Or you can also install using [Homebrew](https://brew.sh/), [Snapcraft](https://snapcraft.io/), or [Scoop](https://scoop.sh/) if you want.
+- Available on CIs: by adding [this simple command](https://taskfile.dev/installation#install-script) to install on your CI script and you're ready to use Task as part of your CI pipeline;
+- Truly cross-platform: while most build tools only work well on Linux or macOS, Task also supports Windows thanks to [this shell interpreter for Go](https://github.com/mvdan/sh).
+- Great for code generation: you can easily [prevent a task from running](https://taskfile.dev/usage#prevent-unnecessary-work) if a given set of files haven't changed since last run (based either on its timestamp or content).
 
-And call it by running task hello from your terminal.
+## Documentation
 
-The above example is just the start, you can take a look at the [usage](https://taskfile.dev/usage) guide to check the full schema documentation and Task features.
-
-
-This is a python wrapper that can be installed with pip.
+- If you're new to Task, we recommend taking a look at our [getting started guide](https://taskfile.dev/getting-started/) for an quick introduction.
+- You can also browse our [usage documentation](https://taskfile.dev/usage/) for more details on how all the features work.
+- Or use our quick reference documentation for the [Taskfile schema](https://taskfile.dev/reference/schema/) or [CLI](https://taskfile.dev/reference/cli/).
 
 ## install
 
