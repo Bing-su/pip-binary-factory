@@ -28,3 +28,6 @@
 [submodule "xh/xh"]
 	path = xh/xh
 	url = https://github.com/ducaale/xh
+[submodule "rustup-init/rustup"]
+	path = rustup-init/rustup
+	url = https://github.com/rust-lang/rustup
