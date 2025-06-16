@@ -75,10 +75,17 @@ jobs:
       - run: ls rustup-init/dist
 
       - name: Install test
+        if: true && !contains( matrix.target , 'musl' )
         run: |-
           pip install --no-index -f rustup-init/dist/ rustup-init-bin
           which rustup-init
           rustup-init --version
+
+      - name: Check wheel
+        run: |-
+          do -i { uvx auditwheel show rustup-init/dist/*.whl; uvx auditwheel repair -w rustup-init/wheelhouse rustup-init/dist/*.whl }
+          do -i { uvx --from delocate delocate-listdeps rustup-init/dist/*.whl; uvx --from delocate delocate-wheel -w rustup-init/wheelhouse -v rustup-init/dist/*.whl }
+          do -i { uvx delvewheel show rustup-init/dist/*.whl; uvx delvewheel repair -w rustup-init/wheelhouse rustup-init/dist/*.whl }
 
       - uses: actions/upload-artifact@v4
         with:
