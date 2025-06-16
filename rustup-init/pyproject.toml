@@ -1,0 +1,55 @@
+[project]
+name = "rustup-init-bin"
+description = "The Rust toolchain installer"
+version = "1.28.2"
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
+dependencies = []
+requires-python = ">=3.7"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+keywords = ["rustup", "rust"]
+classifiers = [
+    "Programming Language :: Rust",
+    "Topic :: System :: Installation/Setup",
+    "Topic :: Utilities",
+]
+
+[project.urls]
+repository = "https://github.com/Bing-su/pip-binary-factory"
+rustup = "https://github.com/rust-lang/rustup"
+
+[build-system]
+requires = ["maturin>=1.8,<2.0"]
+build-backend = "maturin"
+
+[tool.maturin]
+include = [{ path = "LICENSE-*", format = "sdist" }]
+bindings = "bin"
+profile = "release"
+manifest-path = "rustup/Cargo.toml"
+auditwheel = "repair"
+strip = true
+
+[tool.ruff]
+select = [
+    "A",
+    "B",
+    "C4",
+    "C90",
+    "E",
+    "EM",
+    "F",
+    "FA",
+    "I001",
+    "ISC",
+    "N",
+    "PIE",
+    "PT",
+    "RET",
+    "RUF",
+    "SIM",
+    "UP",
+    "W",
+]
+ignore = ["B008", "B905", "E501"]
+unfixable = ["F401"]
