@@ -25,7 +25,6 @@ build-backend = "maturin"
 [tool.maturin]
 include = [{ path = "LICENSE-*", format = "sdist" }]
 bindings = "bin"
-features = ["vendored-openssl"]
 profile = "release"
 manifest-path = "rustup/Cargo.toml"
 auditwheel = "repair"
