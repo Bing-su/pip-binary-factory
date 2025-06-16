@@ -7,8 +7,6 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -41,6 +39,7 @@ jobs:
     environment: publish
     permissions:
       id-token: write
+      attestations: write
 
     steps:
       - uses: actions/download-artifact@v4
@@ -48,6 +47,9 @@ jobs:
           name: artifact
           path: dist
 
+      - uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: dist/*
       - run: ls -R dist
 
       - name: Publish package distributions to PyPI

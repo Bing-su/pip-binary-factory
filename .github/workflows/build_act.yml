@@ -42,12 +42,17 @@ jobs:
     environment: publish
     permissions:
       id-token: write
+      attestations: write
 
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: artifact
           path: dist
+
+      - uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: dist/*
 
       - run: ls -R dist
 
