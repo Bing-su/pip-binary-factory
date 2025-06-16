@@ -44,7 +44,7 @@ def build(output: str, tags: str = "") -> None:
         output,
         "-trimpath",
         "-ldflags",
-        "-s -w -extldflags -static -X github.com/seaweedfs/seaweedfs/weed/util.COMMIT=pypi",
+        "-s -w -extldflags -static -X github.com/seaweedfs/seaweedfs/weed/util/version.COMMIT=pypi",
     ]
 
     if tags:
