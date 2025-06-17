@@ -80,12 +80,7 @@ jobs:
           pip install --no-index -f rustup-init/dist/ rustup-init-bin
           which rustup-init
           rustup-init --version
-
-      - name: Check wheel
-        run: |-
-          do -i { uvx auditwheel show rustup-init/dist/*.whl; uvx auditwheel repair -w rustup-init/wheelhouse rustup-init/dist/*.whl }
-          do -i { uvx --from delocate delocate-listdeps rustup-init/dist/*.whl; uvx --from delocate delocate-wheel -w rustup-init/wheelhouse -v rustup-init/dist/*.whl }
-          do -i { uvx delvewheel show rustup-init/dist/*.whl; uvx delvewheel repair -w rustup-init/wheelhouse rustup-init/dist/*.whl }
+          rustup-init --help
 
       - uses: actions/upload-artifact@v4
         with:
