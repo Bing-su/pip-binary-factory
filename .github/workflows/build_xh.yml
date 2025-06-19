@@ -16,30 +16,30 @@ jobs:
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-musl
-            flags: "--features=native-tls --zig"
+            flags: --features="native-tls reqwest/native-tls-vendored" --zig
             tag: manylinux_2_17_x86_64.manylinux2014_x86_64.musllinux_1_2_x86_64
-            rustflags: -C split-debuginfo=packed -C lto -C embed-bitcode=yes
+            rustflags: -C split-debuginfo=packed -C lto -C embed-bitcode=yes -C codegen-units=1
           - os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-musl
-            flags: "--features=native-tls --zig"
+            flags: --features="native-tls reqwest/native-tls-vendored" --zig
             tag: manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_2_aarch64
-            rustflags: -C split-debuginfo=packed -C lto -C embed-bitcode=yes
+            rustflags: -C split-debuginfo=packed -C lto -C embed-bitcode=yes -C codegen-units=1
           - os: macos-13
             target: x86_64-apple-darwin
-            flags: "--features=native-tls"
-            rustflags: -C split-debuginfo=packed -C lto -C embed-bitcode=yes
+            flags: --features=native-tls
+            rustflags: -C split-debuginfo=packed -C lto -C embed-bitcode=yes -C codegen-units=1
           - os: macos-latest
             target: aarch64-apple-darwin
-            flags: "--features=native-tls"
-            rustflags: -C split-debuginfo=packed -C lto -C embed-bitcode=yes
+            flags: --features=native-tls
+            rustflags: -C split-debuginfo=packed -C lto -C embed-bitcode=yes -C codegen-units=1
           - os: windows-latest
             target: x86_64-pc-windows-msvc
-            flags: "--features=native-tls"
-            rustflags: -C target-feature=+crt-static -C split-debuginfo=packed -C lto -C embed-bitcode=yes
+            flags: --features=native-tls
+            rustflags: -C target-feature=+crt-static -C split-debuginfo=packed -C lto -C embed-bitcode=yes -C codegen-units=1
           - os: windows-11-arm
             target: aarch64-pc-windows-msvc
-            flags: "--features=native-tls"
-            rustflags: -C target-feature=+crt-static -C split-debuginfo=packed -C lto -C embed-bitcode=yes
+            flags: --features=native-tls
+            rustflags: -C target-feature=+crt-static -C split-debuginfo=packed -C lto -C embed-bitcode=yes -C codegen-units=1
 
     steps:
       - uses: hustcer/setup-nu@v3
@@ -57,12 +57,6 @@ jobs:
         if: matrix.rustflags
         shell: bash
         run: echo "RUSTFLAGS=${{ matrix.rustflags }}" >> $GITHUB_ENV
-
-      - name: Fix native-tls
-        if: runner.os == 'Linux'
-        working-directory: ./xh/xh
-        run: |
-          cargo add native-tls --features vendored,alpn
 
       - uses: PyO3/maturin-action@v1
         with:
