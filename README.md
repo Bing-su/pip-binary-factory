@@ -14,9 +14,10 @@ binary package with pip install
 | act-bin         | https://nektosact.com<br/>https://github.com/nektos/act            | [![GitHub version](https://badge.fury.io/gh/nektos%2Fact.svg)](https://badge.fury.io/gh/nektos%2Fact)                       | [![PyPI version](https://badge.fury.io/py/act-bin.svg)](https://badge.fury.io/py/act-bin)                 |
 | nats-server-bin | https://nats.io<br/>https://github.com/nats-io/nats-server         | [![GitHub version](https://badge.fury.io/gh/nats-io%2Fnats-server.svg)](https://badge.fury.io/gh/nats-io%2Fnats-server)     | [![PyPI version](https://badge.fury.io/py/nats-server-bin.svg)](https://badge.fury.io/py/nats-server-bin) |
 | yazi-bin        | https://github.com/sxyazi/yazi                                     | [![GitHub version](https://badge.fury.io/gh/sxyazi%2Fyazi.svg)](https://badge.fury.io/gh/sxyazi%2Fyazi)                     | [![PyPI version](https://badge.fury.io/py/yazi-bin.svg)](https://badge.fury.io/py/yazi-bin)               |
-| seaweedfs-bin   | https://github.com/seaweedfs/seaweedfs                             | ![GitHub Release](https://img.shields.io/github/v/release/seaweedfs/seaweedfs)                                              | [![PyPI version](https://badge.fury.io/py/seaweedfs-bin.svg)](https://badge.fury.io/py/seaweedfs-bin)     |
+| seaweedfs-bin   | https://github.com/seaweedfs/seaweedfs                             | [![GitHub Release](https://img.shields.io/github/v/release/seaweedfs/seaweedfs)](https://github.com/seaweedfs/seaweedfs)    | [![PyPI version](https://badge.fury.io/py/seaweedfs-bin.svg)](https://badge.fury.io/py/seaweedfs-bin)     |
 | juicefs-bin     | https://juicefs.com<br/>https://github.com/juicedata/juicefs       | [![GitHub version](https://badge.fury.io/gh/juicedata%2Fjuicefs.svg)](https://badge.fury.io/gh/juicedata%2Fjuicefs)         | [![PyPI version](https://badge.fury.io/py/juicefs-bin.svg)](https://badge.fury.io/py/juicefs-bin)         |
 | xh-bin          | https://github.com/ducaale/xh                                      | [![GitHub version](https://badge.fury.io/gh/ducaale%2Fxh.svg)](https://badge.fury.io/gh/ducaale%2Fxh)                       | [![PyPI version](https://badge.fury.io/py/xh-bin.svg)](https://badge.fury.io/py/xh-bin)                   |
+| rustup-init-bin | https://github.com/rust-lang/rustup                                | [![GitHub version](https://badge.fury.io/gh/rust-lang%2Frustup.svg)](https://badge.fury.io/gh/rust-lang%2Frustup)           | [![PyPI version](https://badge.fury.io/py/rustup-init-bin.svg)](https://badge.fury.io/py/rustup-init-bin) |
 
 ## pipx, uv
 
@@ -37,5 +38,6 @@ To install the packages listed above using pipx or uv, you can use the following
 | seaweedfs-bin   | `pipx install seaweedfs-bin`   | `uv tool install seaweedfs-bin`   | weed        |
 | juicefs-bin     | `pipx install juicefs-bin`     | `uv tool install juicefs-bin`     | juicefs     |
 | xh-bin          | `pipx install xh-bin`          | `uv tool install xh-bin`          | xh          |
+| rustup-init-bin | `pipx install rustup-init-bin` | `uv tool install rustup-init-bin` | rustup-init |
 
 Please note that you need to have pipx or uv installed on your system before running these commands.
