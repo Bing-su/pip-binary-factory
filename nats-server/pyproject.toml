@@ -1,7 +1,7 @@
 [project]
 name = "nats-server-bin"
 description = "High-Performance server for NATS.io, the cloud and edge native messaging system."
-version = "2.11.4"
+version = "2.11.5"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.7"
