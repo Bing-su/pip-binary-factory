@@ -9,6 +9,12 @@ import subprocess
 import sys
 from pathlib import Path
 
+plat_map = {
+    "manylinux2014_x86_64": "manylinux_2_17_x86_64.manylinux2014_x86_64.musllinux_1_1_x86_64",
+    "manylinux2014_aarch64": "manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64",
+    "manylinux2014_s390x": "manylinux_2_17_s390x.manylinux2014_s390x.musllinux_1_1_s390x",
+    "manylinux2014_ppc64le": "manylinux_2_17_ppc64le.manylinux2014_ppc64le.musllinux_1_1_ppc64le",
+}
 
 def build(os_: str, arch: str, platform: str):
     os.environ["GOOS"] = os_
@@ -24,10 +30,10 @@ def build(os_: str, arch: str, platform: str):
 
     subprocess.run(args, check=True)
 
-    if "manylinux" not in platform:
+    if os_ != "linux":
         return
 
-    arch = platform.split("_", maxsplit=1)[-1]
+    platform_tag = plat_map.get(platform, platform)
 
     whl = next(Path("dist").glob(f"*{platform}*"))
 
@@ -38,7 +44,7 @@ def build(os_: str, arch: str, platform: str):
         "tags",
         "--remove",
         "--platform-tag",
-        f"manylinux_2_17_{arch}.manylinux2014_{arch}.musllinux_1_1_{arch}",
+        platform_tag,
         str(whl),
     ]
     subprocess.run(args, check=True)
@@ -54,6 +60,7 @@ def main():
         ("linux", "arm64", "manylinux2014_aarch64"),
         ("linux", "s390x", "manylinux2014_s390x"),
         ("linux", "ppc64le", "manylinux2014_ppc64le"),
+        ("android", "arm64", "android_33_arm64_v8a"),
     ]
 
     for os_, arch, platform in matrix:
