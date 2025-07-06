@@ -46,7 +46,7 @@ def build(output: str) -> None:
         output,
         "-trimpath",
         "-ldflags",
-        f"-s -w -X main.version={VERSION} -X main.date={today} -X main.buildSource=pypi",
+        f"-s -w -X main.version={VERSION} -X main.commit=pypi -X main.date={today} -X main.buildSource=pypi",
         ".",
     ]
 

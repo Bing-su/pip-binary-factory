@@ -28,6 +28,8 @@ jobs:
           uv pip install --system --no-index -f lazygit/dist/ lazygit-py
           which lazygit
           lazygit --version
+          lazygit --print-config-dir
+          lazygit --config
 
       - uses: actions/upload-artifact@v4
         with:
