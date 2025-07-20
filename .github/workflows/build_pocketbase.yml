@@ -32,6 +32,8 @@ jobs:
           sleep 2
           cat pb.log
 
+          curl http://localhost:8090/api/health
+
       - uses: actions/upload-artifact@v4
         with:
           path: pocketbase/dist
@@ -57,7 +59,7 @@ jobs:
         with:
           subject-path: dist/*
 
-      - run: ls -R dist
+      - run: ls dist
 
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
