@@ -1,7 +1,7 @@
 [project]
 name = "seaweedfs-bin"
 description = "🌿SeaweedFS is a fast distributed storage system for blobs, objects, files, and data lake, for billions of files! Blob store has O(1) disk seek, cloud tiering."
-version = "3.94"
+version = "3.95"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.7"
