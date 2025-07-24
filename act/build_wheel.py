@@ -10,8 +10,9 @@ import sys
 from pathlib import Path
 
 linux_platform_map = {
-    "manylinux2014_x86_64": "manylinux_2_17_x86_64.manylinux2014_x86_64.musllinux_1_1_x86_64",
-    "manylinux2014_aarch64": "manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64",
+    "manylinux_2_28_x86_64": "manylinux_2_28_x86_64.musllinux_1_2_x86_64",
+    "manylinux_2_28_aarch64": "manylinux_2_28_aarch64.musllinux_1_2_aarch64",
+    "manylinux_2_28_riscv64": "manylinux_2_28_riscv64.musllinux_1_2_riscv64",
 }
 
 
@@ -32,7 +33,7 @@ def build(os_: str, arch: str, platform: str):
     if "linux" not in platform:
         return
 
-    platform_tag = linux_platform_map[platform]
+    platform_tag = linux_platform_map.get(platform, platform)
 
     whl = next(Path("dist").glob(f"*{platform}*"))
 
@@ -55,8 +56,9 @@ def main():
         ("windows", "arm64", "win_arm64"),
         ("darwin", "amd64", "macosx_11_0_x86_64"),
         ("darwin", "arm64", "macosx_11_0_arm64"),
-        ("linux", "amd64", "manylinux2014_x86_64"),
-        ("linux", "arm64", "manylinux2014_aarch64"),
+        ("linux", "amd64", "manylinux_2_28_x86_64"),
+        ("linux", "arm64", "manylinux_2_28_aarch64"),
+        ("linux", "riscv64", "manylinux_2_28_riscv64"),
     ]
 
     for os_, arch, platform in matrix:

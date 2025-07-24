@@ -1,8 +1,21 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#     "wheel",
+# ]
+# ///
 import os
 import subprocess
 import sys
 from pathlib import Path
 
+linux_platform_map = {
+    "manylinux_2_28_x86_64": "manylinux_2_28_x86_64.musllinux_1_2_x86_64",
+    "manylinux_2_28_aarch64": "manylinux_2_28_aarch64.musllinux_1_2_aarch64",
+    "manylinux_2_28_s390x": "manylinux_2_28_s390x.musllinux_1_2_s390x",
+    "manylinux_2_28_ppc64le": "manylinux_2_28_ppc64le.musllinux_1_2_ppc64le",
+    "manylinux_2_28_riscv64": "manylinux_2_28_riscv64.musllinux_1_2_riscv64",
+}
 
 def build(os_: str, arch: str, platform: str):
     os.environ["GOOS"] = os_
@@ -10,21 +23,18 @@ def build(os_: str, arch: str, platform: str):
     os.environ["CGO_ENABLED"] = "0"
 
     args = [
-        sys.executable,
-        "-m",
+        "uv",
         "build",
-        "-w",
-        "--config-setting=--python-tag=py3",
-        "--config-setting=--py-limited-api=none",
+        "--wheel",
         f"--config-setting=--plat-name={platform}",
     ]
 
     subprocess.run(args, check=True)
 
-    if "manylinux" not in platform:
+    if "linux" not in platform:
         return
 
-    arch = platform.split("_", maxsplit=1)[-1]
+    platform_tag = linux_platform_map.get(platform, platform)
 
     whl = next(Path("dist").glob(f"*{platform}*"))
 
@@ -33,12 +43,12 @@ def build(os_: str, arch: str, platform: str):
         "-m",
         "wheel",
         "tags",
+        "--remove",
         "--platform-tag",
-        f"manylinux_2_17_{arch}.manylinux2014_{arch}.musllinux_1_1_{arch}",
+        platform_tag,
         str(whl),
     ]
-    subprocess.run(args, check=True)
-    whl.unlink()
+    subprocess.run(args, check=True)  # noqa: S603
 
 
 def main():
@@ -47,10 +57,11 @@ def main():
         ("windows", "arm64", "win_arm64"),
         ("darwin", "amd64", "macosx_11_0_x86_64"),
         ("darwin", "arm64", "macosx_11_0_arm64"),
-        ("linux", "amd64", "manylinux2014_x86_64"),
-        ("linux", "arm64", "manylinux2014_aarch64"),
-        ("linux", "s390x", "manylinux2014_s390x"),
-        ("linux", "ppc64le", "manylinux2014_ppc64le"),
+        ("linux", "amd64", "manylinux_2_28_x86_64"),
+        ("linux", "arm64", "manylinux_2_28_aarch64"),
+        ("linux", "s390x", "manylinux_2_28_s390x"),
+        ("linux", "ppc64le", "manylinux_2_28_ppc64le"),
+        ("linux", "riscv64", "manylinux_2_28_riscv64"),
     ]
 
     for os_, arch, platform in matrix:

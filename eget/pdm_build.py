@@ -44,11 +44,14 @@ def build(output: str) -> None:
     Path(output).chmod(0o777)
 
 
-def pdm_build_hook_enabled(context):
+def pdm_build_hook_enabled(context: Context) -> bool:
     return context.target != "sdist"
 
 
-def pdm_build_initialize(context) -> None:
+def pdm_build_initialize(context: Context) -> None:
+    setting = {"--python-tag": "py3", "--py-limited-api": "none"}
+    context.builder.config_settings = {**setting, **context.builder.config_settings}
+
     context.ensure_build_dir()
     output_path = Path(context.build_dir, "bin", NAME)
     if is_windows():
@@ -57,5 +60,5 @@ def pdm_build_initialize(context) -> None:
 
 
 def pdm_build_finalize(context: Context, artifact: Path) -> None:
-    renamed = tags(str(artifact), python_tags="py3", abi_tags="none", remove=True)
-    print(renamed)
+    if Path(context.build_dir).exists():
+        shutil.rmtree(context.build_dir)

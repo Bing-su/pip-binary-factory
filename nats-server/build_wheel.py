@@ -9,11 +9,12 @@ import subprocess
 import sys
 from pathlib import Path
 
-plat_map = {
-    "manylinux2014_x86_64": "manylinux_2_17_x86_64.manylinux2014_x86_64.musllinux_1_1_x86_64",
-    "manylinux2014_aarch64": "manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64",
-    "manylinux2014_s390x": "manylinux_2_17_s390x.manylinux2014_s390x.musllinux_1_1_s390x",
-    "manylinux2014_ppc64le": "manylinux_2_17_ppc64le.manylinux2014_ppc64le.musllinux_1_1_ppc64le",
+linux_platform_map = {
+    "manylinux_2_28_x86_64": "manylinux_2_28_x86_64.musllinux_1_2_x86_64",
+    "manylinux_2_28_aarch64": "manylinux_2_28_aarch64.musllinux_1_2_aarch64",
+    "manylinux_2_28_s390x": "manylinux_2_28_s390x.musllinux_1_2_s390x",
+    "manylinux_2_28_ppc64le": "manylinux_2_28_ppc64le.musllinux_1_2_ppc64le",
+    "manylinux_2_28_riscv64": "manylinux_2_28_riscv64.musllinux_1_2_riscv64",
 }
 
 def build(os_: str, arch: str, platform: str):
@@ -33,7 +34,7 @@ def build(os_: str, arch: str, platform: str):
     if os_ != "linux":
         return
 
-    platform_tag = plat_map.get(platform, platform)
+    platform_tag = linux_platform_map.get(platform, platform)
 
     whl = next(Path("dist").glob(f"*{platform}*"))
 
@@ -56,10 +57,11 @@ def main():
         ("windows", "arm64", "win_arm64"),
         ("darwin", "amd64", "macosx_11_0_x86_64"),
         ("darwin", "arm64", "macosx_11_0_arm64"),
-        ("linux", "amd64", "manylinux2014_x86_64"),
-        ("linux", "arm64", "manylinux2014_aarch64"),
-        ("linux", "s390x", "manylinux2014_s390x"),
-        ("linux", "ppc64le", "manylinux2014_ppc64le"),
+        ("linux", "amd64", "manylinux_2_28_x86_64"),
+        ("linux", "arm64", "manylinux_2_28_aarch64"),
+        ("linux", "s390x", "manylinux_2_28_s390x"),
+        ("linux", "ppc64le", "manylinux_2_28_ppc64le"),
+        ("linux", "riscv64", "manylinux_2_28_riscv64"),
         ("android", "arm64", "android_33_arm64_v8a"),
     ]
 
