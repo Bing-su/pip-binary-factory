@@ -17,6 +17,7 @@ linux_platform_map = {
     "manylinux_2_28_riscv64": "manylinux_2_28_riscv64.musllinux_1_2_riscv64",
 }
 
+
 def build(os_: str, arch: str, platform: str):
     os.environ["GOOS"] = os_
     os.environ["GOARCH"] = arch
