@@ -60,7 +60,6 @@ def main():
         ("darwin", "arm64", "macosx_11_0_arm64"),
         ("linux", "amd64", "manylinux_2_28_x86_64"),
         ("linux", "arm64", "manylinux_2_28_aarch64"),
-        ("linux", "riscv64", "manylinux_2_28_riscv64"),
     ]
 
     for os_, arch, platform in matrix:
