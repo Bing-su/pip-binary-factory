@@ -20,7 +20,7 @@ repository = "https://github.com/Bing-su/pip-binary-factory"
 xh = "https://github.com/ducaale/xh"
 
 [build-system]
-requires = ["maturin>=1.8,<2.0"]
+requires = ["maturin>=1.9,<2.0"]
 build-backend = "maturin"
 
 [tool.maturin]
