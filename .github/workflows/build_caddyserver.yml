@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: astral-sh/setup-uv@v6
 
       - run: uv build --sdist
@@ -53,7 +53,7 @@ jobs:
 
     steps:
       - uses: hustcer/setup-nu@v3
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: astral-sh/setup-uv@v6
       - uses: actions/setup-python@v5
         with:
@@ -110,7 +110,7 @@ jobs:
       attestations: write
 
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           merge-multiple: true
           path: dist
