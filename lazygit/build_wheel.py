@@ -63,6 +63,7 @@ def main():
         ("linux", "s390x", "manylinux_2_28_s390x"),
         ("linux", "ppc64le", "manylinux_2_28_ppc64le"),
         ("linux", "riscv64", "manylinux_2_28_riscv64"),
+        ("android", "arm64", "android_33_arm64_v8a"),
     ]
 
     for os_, arch, platform in matrix:
