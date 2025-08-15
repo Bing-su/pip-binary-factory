@@ -43,7 +43,7 @@ jobs:
             cc: musl-gcc
 
           - os: macos-latest
-            post-command: uvx wheel tags --remove --platform-tag macosx_11_0_arm64 dist/*.whl
+            post-command: uvx wheel tags --remove --platform-tag macosx_12_0_arm64 dist/*.whl
 
           - os: windows-latest
             post-command: uvx wheel tags --remove --platform-tag win_amd64 dist/*.whl

@@ -17,6 +17,7 @@ linux_platform_map = {
     "manylinux_2_28_riscv64": "manylinux_2_28_riscv64.musllinux_1_2_riscv64",
 }
 
+
 def build(os_: str, arch: str, platform: str):
     os.environ["GOOS"] = os_
     os.environ["GOARCH"] = arch
@@ -55,8 +56,8 @@ def main():
     matrix = [
         ("windows", "amd64", "win_amd64"),
         ("windows", "arm64", "win_arm64"),
-        ("darwin", "amd64", "macosx_11_0_x86_64"),
-        ("darwin", "arm64", "macosx_11_0_arm64"),
+        ("darwin", "amd64", "macosx_12_0_x86_64"),
+        ("darwin", "arm64", "macosx_12_0_arm64"),
         ("linux", "amd64", "manylinux_2_28_x86_64"),
         ("linux", "arm64", "manylinux_2_28_aarch64"),
         ("linux", "s390x", "manylinux_2_28_s390x"),
