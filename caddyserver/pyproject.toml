@@ -1,7 +1,7 @@
 [project]
 name = "caddyserver-bin"
 description = "Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS "
-version = "2.10.0"
+version = "2.10.2"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.7"
