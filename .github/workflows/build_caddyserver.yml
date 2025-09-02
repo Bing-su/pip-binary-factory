@@ -115,7 +115,7 @@ jobs:
           merge-multiple: true
           path: dist
 
-      - uses: actions/attest-build-provenance@v2
+      - uses: actions/attest-build-provenance@v3
         with:
           subject-path: dist/*
       - run: ls dist
