@@ -1,7 +1,7 @@
 [project]
 name = "lazygit-py"
 description = "lazygit - simple terminal UI for git commands"
-version = "0.54.2"
+version = "0.55.0"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.7"
