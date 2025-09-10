@@ -57,7 +57,7 @@ jobs:
       - uses: hustcer/setup-nu@v3
       - uses: actions/checkout@v5
       - run: git submodule update --init -- xh/xh
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.x"
       - uses: astral-sh/setup-uv@v6
