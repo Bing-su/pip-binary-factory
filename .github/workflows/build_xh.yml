@@ -50,7 +50,7 @@ jobs:
           - os: windows-11-arm
             target: aarch64-pc-windows-msvc
             flags: --features=native-tls
-            rustflags: -C target-feature=+crt-static -C split-debuginfo=packed -C lto -C embed-bitcode=yes -C codegen-units=1
+            rustflags: -C target-feature=+crt-static -C split-debuginfo=packed -C codegen-units=1
             test: true
 
     steps:
