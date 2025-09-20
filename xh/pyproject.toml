@@ -1,7 +1,7 @@
 [project]
 name = "xh-bin"
 description = "Friendly and fast tool for sending HTTP requests "
-version = "0.24.1"
+version = "0.25.0"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.7"
