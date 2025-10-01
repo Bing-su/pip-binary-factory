@@ -1,7 +1,7 @@
 [project]
 name = "act-bin"
 description = "Run your GitHub Actions locally 🚀"
-version = "0.2.81"
+version = "0.2.82"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 dependencies = []
 requires-python = ">=3.7"
