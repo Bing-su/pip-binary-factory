@@ -9,12 +9,15 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
-          - ubuntu-24.04-arm
-          - macos-latest
-          - windows-latest
-          - windows-11-arm
+        include:
+          - os: ubuntu-latest
+            platform-tag: manylinux_2_28_x86_64.musllinux_1_2_x86_64
+          - os: ubuntu-24.04-arm
+            platform-tag: manylinux_2_28_aarch64.musllinux_1_2_aarch64
+          - os: macos-latest
+            platform-tag: macosx_12_0_arm64
+          - os: windows-latest
+          - os: windows-11-arm
 
     steps:
       - uses: actions/checkout@v5
@@ -31,8 +34,8 @@ jobs:
         run: uv build --wheel --config-setting=--seaweedfs-tags=5BytesOffset,sqlite
         working-directory: ./seaweedfs
       - name: Audit wheel
-        if: runner.os == 'Linux'
-        run: uvx auditwheel repair -w dist dist/*.whl
+        if: matrix.platform-tag
+        run: uvx wheel tags --remove --platform-tag ${{ matrix.platform-tag }} dist/*.whl
         working-directory: ./seaweedfs
 
       - run: |
@@ -67,6 +70,8 @@ jobs:
         with:
           name: sdist
           path: seaweedfs/dist
+
+      - run: ls seaweedfs/dist
 
   publish:
     name: publish
