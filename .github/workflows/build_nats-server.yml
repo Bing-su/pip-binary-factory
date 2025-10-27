@@ -32,7 +32,7 @@ jobs:
           sleep 2
           cat nats.log
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           path: nats-server/dist
 
@@ -48,7 +48,7 @@ jobs:
       attestations: write
 
     steps:
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           name: artifact
           path: dist
