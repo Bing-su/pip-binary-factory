@@ -1,26 +1,26 @@
 [project]
 name = "caddyserver-bin"
-description = "Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS "
 version = "2.10.2"
-authors = [{ name = "dowon", email = "ks2515@naver.com" }]
-dependencies = []
-requires-python = ">=3.7"
+description = "Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS "
 readme = "README.md"
+requires-python = ">=3.7"
 license.text = "Apache-2.0"
-keywords = ["caddy", "web server", "http", "https", "http3"]
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
+keywords = ["caddy", "http", "http3", "https", "web server"]
 classifiers = [
-    "Programming Language :: Go",
-    "Topic :: Internet :: WWW/HTTP",
-    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+  "Programming Language :: Go",
+  "Topic :: Internet :: WWW/HTTP",
+  "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
 ]
+dependencies = []
 
 [project.urls]
-repository = "https://github.com/Bing-su/pip-binary-factory"
 caddy = "https://caddyserver.com/"
 documentation = "https://caddyserver.com/docs/"
+repository = "https://github.com/Bing-su/pip-binary-factory"
 
 [build-system]
-requires = ["pdm-backend", "tomli; python_version < '3.11'", "eget-py"]
+requires = ["eget-py", "pdm-backend", "tomli; python_version < '3.11'"]
 build-backend = "pdm.backend"
 
 [tool.pdm.build]
@@ -30,26 +30,26 @@ excludes = ["bin/*", ".gitignore", "*.py"]
 [tool.pdm.build.wheel-data]
 scripts = ["${BUILD_DIR}/bin/*"]
 
-[tool.ruff]
+[tool.ruff.lint]
 select = [
-    "A",
-    "B",
-    "C4",
-    "C90",
-    "E",
-    "EM",
-    "F",
-    "FA",
-    "I001",
-    "ISC",
-    "N",
-    "PIE",
-    "PT",
-    "RET",
-    "RUF",
-    "SIM",
-    "UP",
-    "W",
+  "A",
+  "B",
+  "C4",
+  "C90",
+  "E",
+  "EM",
+  "F",
+  "FA",
+  "I001",
+  "ISC",
+  "N",
+  "PIE",
+  "PT",
+  "RET",
+  "RUF",
+  "SIM",
+  "UP",
+  "W",
 ]
 ignore = ["B008", "B905", "E501"]
 unfixable = ["F401"]

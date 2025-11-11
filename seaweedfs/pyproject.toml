@@ -1,24 +1,24 @@
 [project]
 name = "seaweedfs-bin"
-description = "🌿SeaweedFS is a fast distributed storage system for blobs, objects, files, and data lake, for billions of files! Blob store has O(1) disk seek, cloud tiering."
 version = "4.00"
-authors = [{ name = "dowon", email = "ks2515@naver.com" }]
-dependencies = []
-requires-python = ">=3.7"
+description = "🌿SeaweedFS is a fast distributed storage system for blobs, objects, files, and data lake, for billions of files! Blob store has O(1) disk seek, cloud tiering."
 readme = "README.md"
+requires-python = ">=3.7"
 license = { text = "Apache 2.0" }
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 keywords = [
-    "seaweedfs",
-    "distributed storage",
-    "distributed file system",
-    "erasure coding",
-    "blob storage",
-    "object storage",
-    "file system",
-    "data lake",
-    "s3",
+  "blob storage",
+  "data lake",
+  "distributed file system",
+  "distributed storage",
+  "erasure coding",
+  "file system",
+  "object storage",
+  "s3",
+  "seaweedfs",
 ]
 classifiers = ["Programming Language :: Go", "Topic :: System :: Filesystems"]
+dependencies = []
 
 [project.urls]
 repository = "https://github.com/Bing-su/pip-binary-factory"
@@ -36,26 +36,26 @@ excludes = ["bin/*", ".gitignore", "*.py"]
 [tool.pdm.build.wheel-data]
 scripts = ["${BUILD_DIR}/bin/*"]
 
-[tool.ruff]
+[tool.ruff.lint]
 select = [
-    "A",
-    "B",
-    "C4",
-    "C90",
-    "E",
-    "EM",
-    "F",
-    "FA",
-    "I001",
-    "ISC",
-    "N",
-    "PIE",
-    "PT",
-    "RET",
-    "RUF",
-    "SIM",
-    "UP",
-    "W",
+  "A",
+  "B",
+  "C4",
+  "C90",
+  "E",
+  "EM",
+  "F",
+  "FA",
+  "I001",
+  "ISC",
+  "N",
+  "PIE",
+  "PT",
+  "RET",
+  "RUF",
+  "SIM",
+  "UP",
+  "W",
 ]
 ignore = ["B008", "B905", "E501"]
 unfixable = ["F401"]

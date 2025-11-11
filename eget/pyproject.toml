@@ -1,19 +1,19 @@
 [project]
 name = "eget-py"
-description = "zyedidia/eget wrapper for python"
 version = "1.3.4"
-authors = [{ name = "dowon", email = "ks2515@naver.com" }]
+description = "zyedidia/eget wrapper for python"
 readme = "README.md"
 requires-python = ">=3.8"
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 keywords = ["eget", "github"]
 classifiers = [
-    "Programming Language :: Go",
-    "Topic :: System :: Installation/Setup",
+  "Programming Language :: Go",
+  "Topic :: System :: Installation/Setup",
 ]
 
 [project.urls]
-repository = "https://github.com/Bing-su/pip-binary-factory"
 eget = "https://github.com/zyedidia/eget"
+repository = "https://github.com/Bing-su/pip-binary-factory"
 
 [build-system]
 requires = ["pdm-backend", "wheel"]
@@ -27,26 +27,26 @@ excludes = ["bin/*", ".gitignore"]
 [tool.pdm.build.wheel-data]
 scripts = ["${BUILD_DIR}/bin/*"]
 
-[tool.ruff]
+[tool.ruff.lint]
 select = [
-    "A",
-    "B",
-    "C4",
-    "C90",
-    "E",
-    "EM",
-    "F",
-    "FA",
-    "I001",
-    "ISC",
-    "N",
-    "PIE",
-    "PT",
-    "RET",
-    "RUF",
-    "SIM",
-    "UP",
-    "W",
+  "A",
+  "B",
+  "C4",
+  "C90",
+  "E",
+  "EM",
+  "F",
+  "FA",
+  "I001",
+  "ISC",
+  "N",
+  "PIE",
+  "PT",
+  "RET",
+  "RUF",
+  "SIM",
+  "UP",
+  "W",
 ]
 ignore = ["B008", "B905", "E501"]
 unfixable = ["F401"]

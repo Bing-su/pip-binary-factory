@@ -1,24 +1,24 @@
 [project]
 name = "act-bin"
-description = "Run your GitHub Actions locally 🚀"
 version = "0.2.82"
-authors = [{ name = "dowon", email = "ks2515@naver.com" }]
-dependencies = []
-requires-python = ">=3.7"
+description = "Run your GitHub Actions locally 🚀"
 readme = "README.md"
+requires-python = ">=3.7"
 license = { text = "MIT" }
-keywords = ["github", "actions", "act"]
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
+keywords = ["act", "actions", "github"]
 classifiers = [
-    "Programming Language :: Go",
-    "License :: OSI Approved :: MIT License",
-    "Intended Audience :: Developers",
-    "Topic :: Software Development :: Build Tools",
-    "Topic :: Software Development :: Testing",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Go",
+  "Topic :: Software Development :: Build Tools",
+  "Topic :: Software Development :: Testing",
 ]
+dependencies = []
 
 [project.urls]
-repository = "https://github.com/Bing-su/pip-binary-factory"
 act = "https://nektosact.com"
+repository = "https://github.com/Bing-su/pip-binary-factory"
 
 [build-system]
 requires = ["pdm-backend", "tomli; python_version < '3.11'"]
@@ -34,33 +34,33 @@ scripts = ["${BUILD_DIR}/bin/*"]
 
 [tool.ruff.lint]
 select = [
-    "A",
-    "B",
-    "C4",
-    "C90",
-    "E",
-    "EM",
-    "F",
-    "FA",
-    "FBT",
-    "FURB",
-    "I001",
-    "ISC",
-    "N",
-    "PD",
-    "PERF",
-    "PIE",
-    "PL",
-    "PT",
-    "PTH",
-    "RET",
-    "RUF",
-    "S",
-    "SIM",
-    "T20",
-    "TRY",
-    "UP",
-    "W",
+  "A",
+  "B",
+  "C4",
+  "C90",
+  "E",
+  "EM",
+  "F",
+  "FA",
+  "FBT",
+  "FURB",
+  "I001",
+  "ISC",
+  "N",
+  "PD",
+  "PERF",
+  "PIE",
+  "PL",
+  "PT",
+  "PTH",
+  "RET",
+  "RUF",
+  "S",
+  "SIM",
+  "T20",
+  "TRY",
+  "UP",
+  "W",
 ]
 ignore = ["B905", "E501"]
 unfixable = ["F401"]

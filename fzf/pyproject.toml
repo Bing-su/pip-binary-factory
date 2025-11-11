@@ -1,18 +1,18 @@
 [project]
 name = "fzf-bin"
-description = "fzf - 🌸 A command-line fuzzy finder"
 version = "0.66.1"
-authors = [{ name = "dowon", email = "ks2515@naver.com" }]
-dependencies = []
-requires-python = ">=3.7"
+description = "fzf - 🌸 A command-line fuzzy finder"
 readme = "README.md"
+requires-python = ">=3.7"
 license = { text = "MIT" }
-keywords = ["fzf", "tui", "fuzzy finder"]
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
+keywords = ["fuzzy finder", "fzf", "tui"]
 classifiers = [
-    "Programming Language :: Go",
-    "Topic :: Software Development :: User Interfaces",
-    "Topic :: Terminals",
+  "Programming Language :: Go",
+  "Topic :: Software Development :: User Interfaces",
+  "Topic :: Terminals",
 ]
+dependencies = []
 
 [project.urls]
 repository = "https://github.com/Bing-su/pip-binary-factory"
@@ -29,26 +29,26 @@ excludes = ["bin/*", ".gitignore", "*.py"]
 [tool.pdm.build.wheel-data]
 scripts = ["${BUILD_DIR}/bin/*"]
 
-[tool.ruff]
+[tool.ruff.lint]
 select = [
-    "A",
-    "B",
-    "C4",
-    "C90",
-    "E",
-    "EM",
-    "F",
-    "FA",
-    "I001",
-    "ISC",
-    "N",
-    "PIE",
-    "PT",
-    "RET",
-    "RUF",
-    "SIM",
-    "UP",
-    "W",
+  "A",
+  "B",
+  "C4",
+  "C90",
+  "E",
+  "EM",
+  "F",
+  "FA",
+  "I001",
+  "ISC",
+  "N",
+  "PIE",
+  "PT",
+  "RET",
+  "RUF",
+  "SIM",
+  "UP",
+  "W",
 ]
 ignore = ["B008", "B905", "E501"]
 unfixable = ["F401"]

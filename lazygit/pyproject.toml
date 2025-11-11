@@ -1,22 +1,22 @@
 [project]
 name = "lazygit-py"
-description = "lazygit - simple terminal UI for git commands"
 version = "0.56.0"
-authors = [{ name = "dowon", email = "ks2515@naver.com" }]
-dependencies = []
-requires-python = ">=3.7"
+description = "lazygit - simple terminal UI for git commands"
 readme = "README.md"
+requires-python = ">=3.7"
 license = { text = "MIT" }
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 keywords = ["git", "tui"]
 classifiers = [
-    "Programming Language :: Go",
-    "Topic :: Software Development :: Version Control :: Git",
-    "Topic :: Terminals",
+  "Programming Language :: Go",
+  "Topic :: Software Development :: Version Control :: Git",
+  "Topic :: Terminals",
 ]
+dependencies = []
 
 [project.urls]
-repository = "https://github.com/Bing-su/pip-binary-factory"
 lazygit = "https://github.com/jesseduffield/lazygit"
+repository = "https://github.com/Bing-su/pip-binary-factory"
 
 [build-system]
 requires = ["pdm-backend", "tomli; python_version < '3.11'"]
@@ -32,33 +32,33 @@ scripts = ["${BUILD_DIR}/bin/*"]
 
 [tool.ruff.lint]
 select = [
-    "A",
-    "B",
-    "C4",
-    "C90",
-    "E",
-    "EM",
-    "F",
-    "FA",
-    "FBT",
-    "FURB",
-    "I001",
-    "ISC",
-    "N",
-    "PD",
-    "PERF",
-    "PIE",
-    "PL",
-    "PT",
-    "PTH",
-    "RET",
-    "RUF",
-    "S",
-    "SIM",
-    "T20",
-    "TRY",
-    "UP",
-    "W",
+  "A",
+  "B",
+  "C4",
+  "C90",
+  "E",
+  "EM",
+  "F",
+  "FA",
+  "FBT",
+  "FURB",
+  "I001",
+  "ISC",
+  "N",
+  "PD",
+  "PERF",
+  "PIE",
+  "PL",
+  "PT",
+  "PTH",
+  "RET",
+  "RUF",
+  "S",
+  "SIM",
+  "T20",
+  "TRY",
+  "UP",
+  "W",
 ]
 ignore = ["B905", "E501"]
 unfixable = ["F401"]

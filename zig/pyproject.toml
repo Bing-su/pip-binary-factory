@@ -1,24 +1,24 @@
 [project]
 name = "zig-bin"
-description = "Zig is a general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software."
 version = "0.15.2"
-authors = [{ name = "dowon", email = "ks2515@naver.com" }]
-dependencies = []
-requires-python = ">=3.7"
+description = "Zig is a general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software."
 readme = "README.md"
+requires-python = ">=3.7"
 license = { text = "MIT" }
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 keywords = ["zig"]
 classifiers = [
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Other",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Other",
 ]
+dependencies = []
 
 [project.urls]
 repository = "https://github.com/Bing-su/pip-binary-factory"
 ziglang = "https://ziglang.org"
 
 [build-system]
-requires = ["pdm-backend", "wheel", "requests"]
+requires = ["pdm-backend", "requests", "wheel"]
 build-backend = "pdm.backend"
 
 [tool.pdm.build]
@@ -30,26 +30,26 @@ excludes = ["bin/*", "lib/*", ".gitignore"]
 scripts = ["${BUILD_DIR}/bin/*"]
 data = [{ path = "${BUILD_DIR}/lib/**/*", relative-to = ".pdm-build" }]
 
-[tool.ruff]
+[tool.ruff.lint]
 select = [
-    "A",
-    "B",
-    "C4",
-    "C90",
-    "E",
-    "EM",
-    "F",
-    "FA",
-    "I001",
-    "ISC",
-    "N",
-    "PIE",
-    "PT",
-    "RET",
-    "RUF",
-    "SIM",
-    "UP",
-    "W",
+  "A",
+  "B",
+  "C4",
+  "C90",
+  "E",
+  "EM",
+  "F",
+  "FA",
+  "I001",
+  "ISC",
+  "N",
+  "PIE",
+  "PT",
+  "RET",
+  "RUF",
+  "SIM",
+  "UP",
+  "W",
 ]
 ignore = ["B008", "B905", "E501"]
 unfixable = ["F401"]
