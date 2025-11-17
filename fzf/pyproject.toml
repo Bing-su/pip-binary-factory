@@ -1,6 +1,6 @@
 [project]
 name = "fzf-bin"
-version = "0.66.1"
+version = "0.67.0"
 description = "fzf - 🌸 A command-line fuzzy finder"
 readme = "README.md"
 requires-python = ">=3.7"
