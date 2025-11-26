@@ -49,7 +49,7 @@ jobs:
 
     steps:
       - uses: hustcer/setup-nu@v3
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - run: git submodule update --init -- rustup-init/rustup
       - uses: actions/setup-python@v6
         with:
@@ -93,7 +93,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - run: git submodule update --init -- rustup-init/rustup
       - uses: astral-sh/setup-uv@v7
 
