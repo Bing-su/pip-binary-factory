@@ -31,3 +31,6 @@
 [submodule "rustup-init/rustup"]
 	path = rustup-init/rustup
 	url = https://github.com/rust-lang/rustup
+[submodule "jaq/jaq"]
+	path = jaq/jaq
+	url = https://github.com/01mf02/jaq
