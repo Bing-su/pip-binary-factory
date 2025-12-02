@@ -1,0 +1,142 @@
+name: Build jaq
+
+on:
+  - workflow_dispatch
+
+jobs:
+  wheel:
+    name: build-${{ matrix.os }}-${{ matrix.target }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: nu {0}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: x86_64-unknown-linux-musl
+            flags: --zig
+            tag: manylinux_2_28_x86_64.musllinux_1_2_x86_64
+            test: true
+          - os: ubuntu-24.04-arm
+            target: aarch64-unknown-linux-musl
+            flags: --zig
+            tag: manylinux_2_28_aarch64.musllinux_1_2_aarch64
+            test: true
+          - os: ubuntu-latest
+            target: riscv64gc-unknown-linux-musl
+            flags: --zig
+            tag: manylinux_2_31_riscv64.musllinux_1_2_riscv64
+            test: false
+          - os: macos-latest
+            target: x86_64-apple-darwin
+            flags: ""
+            test: false
+          - os: macos-latest
+            target: aarch64-apple-darwin
+            flags: ""
+            test: true
+          - os: windows-latest
+            target: x86_64-pc-windows-msvc
+            flags: ""
+            test: true
+          - os: windows-11-arm
+            target: aarch64-pc-windows-msvc
+            flags: ""
+            test: true
+
+    steps:
+      - uses: hustcer/setup-nu@v3
+      - uses: actions/checkout@v6
+      - run: git submodule update --init -- jaq/jaq
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+      - uses: astral-sh/setup-uv@v7
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - uses: PyO3/maturin-action@v1
+        with:
+          command: build
+          args: --release --out dist ${{ matrix.flags }}
+          target: ${{ matrix.target }}
+          manylinux: musllinux_1_2
+          working-directory: ./jaq
+
+      - name: Post Processing wheel
+        if: matrix.tag
+        shell: bash
+        run: |
+          sudo chmod -R 777 dist
+          uvx wheel tags --remove --platform-tag ${{ matrix.tag }} dist/*.whl
+        working-directory: ./jaq
+
+      - run: ls jaq/dist
+
+      - name: Install test
+        if: matrix.test
+        run: |-
+          pip install --no-index -f jaq/dist/ jaq-bin
+          which jaq
+          jaq --version
+
+          do -i { objdump -T (which jaq | get path.0) }
+
+          jaq .project jaq/pyproject.toml
+          jaq . .github/dependabot.yml
+
+      - uses: actions/upload-artifact@v5
+        with:
+          name: wheel-${{ matrix.os }}-${{ matrix.target }}-${{ github.run_attempt }}
+          path: jaq/dist/*.whl
+          if-no-files-found: error
+
+  sdist:
+    name: sdist
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - run: git submodule update --init -- jaq/jaq
+      - uses: astral-sh/setup-uv@v7
+
+      - run: uv build --sdist
+        working-directory: ./jaq
+
+      - run: ls jaq/dist
+
+      - uses: actions/upload-artifact@v5
+        with:
+          name: sdist
+          path: jaq/dist/*.tar.gz
+          if-no-files-found: error
+
+  publish:
+    name: publish
+    runs-on: ubuntu-latest
+    needs: [sdist, wheel]
+    environment: publish
+    permissions:
+      id-token: write
+      attestations: write
+
+    steps:
+      - uses: actions/download-artifact@v6
+        with:
+          merge-multiple: true
+          path: dist
+
+      - uses: actions/attest-build-provenance@v3
+        with:
+          subject-path: dist/*
+
+      - run: ls dist
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist
+          skip-existing: true
