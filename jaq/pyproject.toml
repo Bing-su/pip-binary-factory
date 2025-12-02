@@ -26,6 +26,7 @@ build-backend = "maturin"
 [tool.maturin]
 auditwheel = "repair"
 bindings = "bin"
+include = [{ format = "sdist", path = "LICENSE" }]
 manifest-path = "jaq/jaq/Cargo.toml"
 profile = "release"
 strip = true
