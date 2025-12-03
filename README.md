@@ -18,6 +18,7 @@ binary package with pip install
 | juicefs-bin     | https://juicefs.com<br/>https://github.com/juicedata/juicefs       | [![GitHub version](https://badge.fury.io/gh/juicedata%2Fjuicefs.svg)](https://badge.fury.io/gh/juicedata%2Fjuicefs)         | [![PyPI version](https://badge.fury.io/py/juicefs-bin.svg)](https://badge.fury.io/py/juicefs-bin)         |
 | xh-bin          | https://github.com/ducaale/xh                                      | [![GitHub version](https://badge.fury.io/gh/ducaale%2Fxh.svg)](https://badge.fury.io/gh/ducaale%2Fxh)                       | [![PyPI version](https://badge.fury.io/py/xh-bin.svg)](https://badge.fury.io/py/xh-bin)                   |
 | rustup-init-bin | https://github.com/rust-lang/rustup                                | [![GitHub version](https://badge.fury.io/gh/rust-lang%2Frustup.svg)](https://badge.fury.io/gh/rust-lang%2Frustup)           | [![PyPI version](https://badge.fury.io/py/rustup-init-bin.svg)](https://badge.fury.io/py/rustup-init-bin) |
+| jaq-bin         | https://github.com/01mf02/jaq                                      | [![GitHub version](https://badge.fury.io/gh/01mf02%2Fjaq.svg)](https://badge.fury.io/gh/01mf02%2Fjaq)                       | [![PyPI version](https://badge.fury.io/py/jaq-bin.svg)](https://badge.fury.io/py/jaq-bin)                 |
 
 ## pipx, uv
 
@@ -39,5 +40,6 @@ To install the packages listed above using pipx or uv, you can use the following
 | juicefs-bin     | `pipx install juicefs-bin`     | `uv tool install juicefs-bin`     | juicefs     |
 | xh-bin          | `pipx install xh-bin`          | `uv tool install xh-bin`          | xh          |
 | rustup-init-bin | `pipx install rustup-init-bin` | `uv tool install rustup-init-bin` | rustup-init |
+| jaq-bin         | `pipx install jaq-bin`         | `uv tool install jaq-bin`         | jaq         |
 
 Please note that you need to have pipx or uv installed on your system before running these commands.
