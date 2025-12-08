@@ -1,6 +1,6 @@
 [project]
 name = "lazygit-py"
-version = "0.56.0"
+version = "0.57.0"
 description = "lazygit - simple terminal UI for git commands"
 readme = "README.md"
 requires-python = ">=3.7"
