@@ -88,7 +88,7 @@ jobs:
           jaq .project jaq/pyproject.toml
           jaq . .github/dependabot.yml
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: wheel-${{ matrix.os }}-${{ matrix.target }}-${{ github.run_attempt }}
           path: jaq/dist/*.whl
@@ -108,7 +108,7 @@ jobs:
 
       - run: ls jaq/dist
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: sdist
           path: jaq/dist/*.tar.gz
@@ -124,7 +124,7 @@ jobs:
       attestations: write
 
     steps:
-      - uses: actions/download-artifact@v6
+      - uses: actions/download-artifact@v7
         with:
           merge-multiple: true
           path: dist

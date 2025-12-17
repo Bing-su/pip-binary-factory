@@ -47,7 +47,7 @@ jobs:
           sleep 20
           cat log.log
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: wheel-${{ matrix.os }}-${{ github.run_attempt }}
           path: seaweedfs/dist
@@ -66,7 +66,7 @@ jobs:
         run: uv build --sdist
         working-directory: ./seaweedfs
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: sdist
           path: seaweedfs/dist
@@ -83,7 +83,7 @@ jobs:
       attestations: write
 
     steps:
-      - uses: actions/download-artifact@v6
+      - uses: actions/download-artifact@v7
         with:
           path: dist
           merge-multiple: true
