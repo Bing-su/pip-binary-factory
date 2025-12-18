@@ -1,7 +1,7 @@
 [project]
 name = "xh-bin"
-version = "0.25.0"
-description = "Friendly and fast tool for sending HTTP requests "
+version = "0.25.3"
+description = "Friendly and fast tool for sending HTTP requests"
 readme = "README.md"
 requires-python = ">=3.7"
 license = { text = "MIT" }
@@ -20,7 +20,7 @@ repository = "https://github.com/Bing-su/pip-binary-factory"
 xh = "https://github.com/ducaale/xh"
 
 [build-system]
-requires = ["maturin>=1.9,<2.0"]
+requires = ["maturin>=1.10,<2.0"]
 build-backend = "maturin"
 
 [tool.maturin]
@@ -28,6 +28,7 @@ auditwheel = "repair"
 bindings = "bin"
 include = [{ format = "sdist", path = "LICENSE" }]
 manifest-path = "xh/Cargo.toml"
+profile = "release"
 strip = true
 
 [tool.ruff.lint]
