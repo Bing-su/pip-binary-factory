@@ -1,6 +1,6 @@
 [project]
 name = "go-task-bin"
-version = "3.45.5"
+version = "3.46.2"
 description = "A task runner / simpler Make alternative written in Go"
 readme = "README.md"
 requires-python = ">=3.7"
