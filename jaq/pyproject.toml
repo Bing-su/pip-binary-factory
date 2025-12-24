@@ -1,6 +1,6 @@
 [project]
 name = "jaq-bin"
-version = "3.0.0-alpha"
+version = "3.0.0-beta"
 description = "A jq clone focused on correctness, speed, and simplicity"
 readme = "README.md"
 requires-python = ">=3.7"
