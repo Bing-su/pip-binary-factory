@@ -1,6 +1,6 @@
 [project]
 name = "act-bin"
-version = "0.2.83"
+version = "0.2.84"
 description = "Run your GitHub Actions locally 🚀"
 readme = "README.md"
 requires-python = ">=3.7"
