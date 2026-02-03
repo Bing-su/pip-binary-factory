@@ -15,6 +15,7 @@ classifiers = [
 dependencies = []
 
 [project.urls]
+micro = "https://micro-editor.github.io"
 repository = "https://github.com/Bing-su/pip-binary-factory"
 
 [build-system]
