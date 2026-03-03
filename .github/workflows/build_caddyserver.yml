@@ -108,6 +108,7 @@ jobs:
     permissions:
       id-token: write
       attestations: write
+      artifact-metadata: write
 
     steps:
       - uses: actions/download-artifact@v8
@@ -115,7 +116,7 @@ jobs:
           merge-multiple: true
           path: dist
 
-      - uses: actions/attest-build-provenance@v4
+      - uses: actions/attest@v4
         with:
           subject-path: dist/*
       - run: ls dist
