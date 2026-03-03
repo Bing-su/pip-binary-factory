@@ -17,7 +17,7 @@ jobs:
 
       - run: ls caddyserver/dist
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: sdist
           path: caddyserver/dist
@@ -93,7 +93,7 @@ jobs:
           caddy start --config Caddyfile
           http get http://127.0.0.1:23333 | to text | print
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: wheel-${{ matrix.os }}-${{ github.run_attempt }}
           path: caddyserver/dist
@@ -110,12 +110,12 @@ jobs:
       attestations: write
 
     steps:
-      - uses: actions/download-artifact@v7
+      - uses: actions/download-artifact@v8
         with:
           merge-multiple: true
           path: dist
 
-      - uses: actions/attest-build-provenance@v3
+      - uses: actions/attest-build-provenance@v4
         with:
           subject-path: dist/*
       - run: ls dist

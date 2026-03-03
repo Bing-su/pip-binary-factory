@@ -100,7 +100,7 @@ jobs:
           xh -I POST https://httpbingo.org/post foo=bar
           xh -I --native-tls POST https://httpbingo.org/post native=tls
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: wheel-${{ matrix.os }}-${{ matrix.target }}-${{ github.run_attempt }}
           path: xh/dist/*.whl
@@ -120,7 +120,7 @@ jobs:
 
       - run: ls xh/dist
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: sdist
           path: xh/dist/*.tar.gz
@@ -136,12 +136,12 @@ jobs:
       attestations: write
 
     steps:
-      - uses: actions/download-artifact@v7
+      - uses: actions/download-artifact@v8
         with:
           merge-multiple: true
           path: dist
 
-      - uses: actions/attest-build-provenance@v3
+      - uses: actions/attest-build-provenance@v4
         with:
           subject-path: dist/*
 
