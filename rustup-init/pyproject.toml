@@ -1,6 +1,5 @@
 [project]
 name = "rustup-init-bin"
-version = "1.28.2"
 description = "The Rust toolchain installer"
 readme = "README.md"
 requires-python = ">=3.7"
@@ -13,13 +12,14 @@ classifiers = [
   "Topic :: Utilities",
 ]
 dependencies = []
+dynamic = ["version"]
 
 [project.urls]
 repository = "https://github.com/Bing-su/pip-binary-factory"
 rustup = "https://github.com/rust-lang/rustup"
 
 [build-system]
-requires = ["maturin>=1.8,<2.0"]
+requires = ["maturin>=1.12,<2.0"]
 build-backend = "maturin"
 
 [tool.maturin]
