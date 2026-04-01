@@ -2,7 +2,7 @@ module act
 
 go 1.25.0
 
-require github.com/nektos/act v0.2.86
+require github.com/nektos/act v0.2.87
 
 require (
 	dario.cat/mergo v1.0.2 // indirect
