@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - run: git submodule update --init -- yazi/yazi
-      - uses: astral-sh/setup-uv@v8.0.0
+      - uses: astral-sh/setup-uv@v8.1.0
 
       - run: uv build --sdist
         working-directory: ./yazi
@@ -74,7 +74,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - run: git submodule update --init -- yazi/yazi
-      - uses: astral-sh/setup-uv@v8.0.0
+      - uses: astral-sh/setup-uv@v8.1.0
       - uses: actions/setup-python@v6
         with:
           python-version: "3.x"
