@@ -2,7 +2,7 @@ module pocketbase
 
 go 1.25.0
 
-require github.com/pocketbase/pocketbase v0.37.3
+require github.com/pocketbase/pocketbase v0.37.4
 
 require (
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
@@ -41,5 +41,5 @@ require (
 	modernc.org/libc v1.72.0 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
-	modernc.org/sqlite v1.49.1 // indirect
+	modernc.org/sqlite v1.50.0 // indirect
 )
