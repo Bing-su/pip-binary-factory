@@ -1,6 +1,6 @@
 [project]
 name = "nats-server-bin"
-version = "2.12.8"
+version = "2.14.0"
 description = "High-Performance server for NATS.io, the cloud and edge native messaging system."
 readme = "README.md"
 requires-python = ">=3.7"
