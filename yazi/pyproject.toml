@@ -1,17 +1,12 @@
 [project]
 name = "yazi-bin"
-version = "26.1.22"
+version = "26.5.6"
 description = "💥 Blazing fast terminal file manager written in Rust, based on async I/O."
 readme = "README.md"
 requires-python = ">=3.7"
 license = { text = "MIT" }
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
-keywords = [
-  "file-manager",
-  "terminal",
-  "terminal-file-manager",
-  "tui",
-]
+keywords = ["file-manager", "terminal", "terminal-file-manager", "tui"]
 classifiers = [
   "Programming Language :: Rust",
   "Topic :: Desktop Environment :: File Managers",
