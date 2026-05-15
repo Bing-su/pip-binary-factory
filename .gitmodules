@@ -34,3 +34,6 @@
 [submodule "jaq/jaq"]
 	path = jaq/jaq
 	url = https://github.com/01mf02/jaq
+[submodule "brush/brush"]
+	path = brush/brush
+	url = https://github.com/reubeno/brush

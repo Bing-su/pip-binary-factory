@@ -1,0 +1,13 @@
+# brush-bin
+
+https://github.com/reubeno/brush
+
+`brush` is a modern bash- and POSIX- compatible shell written in Rust. Run your existing scripts and .bashrc unchanged -- with syntax highlighting and auto-suggestions built in.
+
+[![image](https://github.com/user-attachments/assets/0e64d1b9-7e4e-43be-8593-6c1b9607ac52)](https://private-user-images.githubusercontent.com/10508433/404689022-0e64d1b9-7e4e-43be-8593-6c1b9607ac52.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg4MjQ3MDQsIm5iZiI6MTc3ODgyNDQwNCwicGF0aCI6Ii8xMDUwODQzMy80MDQ2ODkwMjItMGU2NGQxYjktN2U0ZS00M2JlLTg1OTMtNmMxYjk2MDdhYzUyLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA1MTUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNTE1VDA1NTMyNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTI4MzA5MGQ0MTM4ZGIwYjI5MDcyMWU0NTUyYzljMzU2Yjg3NzU3NjU1ZDI5YWU3NTFhN2FjZTkxZTUzMjk1NTQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRmdpZiJ9.Me2qai5qwFJZwtI1gq4c2tXCd8ni0EprUOEbjzsSTWY)
+
+## install
+
+```sh
+pip install brush-bin
+```
