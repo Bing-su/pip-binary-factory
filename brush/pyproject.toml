@@ -1,0 +1,53 @@
+[project]
+name = "brush-bin"
+readme = "README.md"
+requires-python = ">=3.7"
+authors = [{ name = "dowon", email = "ks2515@naver.com" }]
+classifiers = [
+  "Programming Language :: Rust",
+  "Topic :: System :: Shells",
+  "Topic :: Terminals"
+]
+dependencies = []
+dynamic = ["description", "keywords", "license", "version"]
+
+[project.urls]
+brush = "https://github.com/reubeno/brush"
+repository = "https://github.com/Bing-su/pip-binary-factory"
+
+[build-system]
+requires = ["maturin>=1.13,<2.0"]
+build-backend = "maturin"
+
+[tool.maturin]
+auditwheel = "repair"
+bindings = "bin"
+features = ["experimental"]
+include = [{ format = "sdist", path = "LICENSE" }]
+manifest-path = "brush/brush/Cargo.toml"
+profile = "release"
+strip = true
+
+[tool.ruff.lint]
+select = [
+  "A",
+  "B",
+  "C4",
+  "C90",
+  "E",
+  "EM",
+  "F",
+  "FA",
+  "I001",
+  "ISC",
+  "N",
+  "PIE",
+  "PT",
+  "RET",
+  "RUF",
+  "SIM",
+  "UP",
+  "W",
+]
+ignore = ["B008", "B905", "E501"]
+unfixable = ["F401"]
