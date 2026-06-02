@@ -37,3 +37,6 @@
 [submodule "brush/brush"]
 	path = brush/brush
 	url = https://github.com/reubeno/brush
+[submodule "ripgrep/ripgrep"]
+	path = ripgrep/ripgrep
+	url = https://github.com/burntsushi/ripgrep
