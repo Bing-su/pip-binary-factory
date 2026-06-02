@@ -81,7 +81,7 @@ jobs:
       - name: Install test
         if: matrix.test
         run: |-
-          pip install --no-index -f ripgrep/dist/ rg-bin
+          pip install --no-index -f ripgrep/dist/ ripgrep-bin
           which rg
           rg --version
 

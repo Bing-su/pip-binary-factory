@@ -1,5 +1,5 @@
 [project]
-name = "rg-bin"
+name = "ripgrep-bin"
 readme = "README.md"
 requires-python = ">=3.7"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]

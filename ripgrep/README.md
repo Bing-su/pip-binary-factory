@@ -1,4 +1,4 @@
-# rg-bin
+# ripgrep-bin
 
 https://github.com/BurntSushi/ripgrep
 
@@ -7,5 +7,5 @@ https://github.com/BurntSushi/ripgrep
 ## install
 
 ```sh
-pip install rg-bin
+pip install ripgrep-bin
 ```
