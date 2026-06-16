@@ -8,7 +8,7 @@ from tempfile import TemporaryDirectory
 from typing import TYPE_CHECKING
 
 import requests
-from wheel.cli.tags import tags
+from wheel._commands.tags import tags
 
 if TYPE_CHECKING:
     from pdm.backend.hooks import Context
@@ -41,6 +41,10 @@ def is_aarch64():
     return any(arch in platform.machine().lower() for arch in ("arm64", "aarch64"))
 
 
+def is_riscv64():
+    return "riscv64" in platform.machine().lower()
+
+
 def is_x86():
     return any(arch in platform.machine().lower() for arch in ("x86", "i386", "i686"))
 
@@ -53,6 +57,8 @@ def get_platform():
         arch = "x86_64"
     elif is_aarch64():
         arch = "aarch64"
+    elif is_riscv64():
+        arch = "riscv64"
     elif is_x86():
         arch = "x86"
     else:
