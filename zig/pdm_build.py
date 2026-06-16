@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from pdm.backend.hooks import Context
 
 NAME = "zig"
-VERSION = "0.15.2"
+VERSION = "0.16.0"
 
 ZIG_VERSION_INFO_URL = "https://ziglang.org/download/index.json"
 ZIG_PYTHON_PLATFORMS = {
@@ -28,6 +28,7 @@ ZIG_PYTHON_PLATFORMS = {
     # linux
     "x86_64-linux": "manylinux_2_12_x86_64.manylinux2010_x86_64.musllinux_1_1_x86_64",
     "aarch64-linux": "manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64",
+    "riscv64-linux": "manylinux_2_31_riscv64.musllinux_1_2_riscv64",
     "x86-linux": "manylinux_2_12_i686.manylinux2010_i686.musllinux_1_1_i686",
 }
 
