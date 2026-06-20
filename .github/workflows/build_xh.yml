@@ -16,35 +16,35 @@ jobs:
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-musl
-            flags: --features="native-tls reqwest/native-tls-vendored http3" --zig
+            flags: --features="native-tls reqwest/native-tls-vendored" --zig
             tag: manylinux_2_28_x86_64.musllinux_1_2_x86_64
             test: true
           - os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-musl
-            flags: --features="native-tls reqwest/native-tls-vendored http3" --zig
+            flags: --features="native-tls reqwest/native-tls-vendored" --zig
             tag: manylinux_2_28_aarch64.musllinux_1_2_aarch64
             test: true
-          - os: ubuntu-24.04-riscv
+          - os: ubuntu-latest
             target: riscv64gc-unknown-linux-musl
-            flags: --features="native-tls reqwest/native-tls-vendored http3" --zig
+            flags: --features="native-tls reqwest/native-tls-vendored" --zig
             tag: manylinux_2_31_riscv64.musllinux_1_2_riscv64
-            test: true
+            test: false
           - os: macos-latest
             target: x86_64-apple-darwin
-            flags: --features="native-tls http3"
+            flags: --features=native-tls
             test: false
           - os: macos-latest
             target: aarch64-apple-darwin
-            flags: --features="native-tls http3"
+            flags: --features=native-tls
             test: true
           - os: windows-latest
             target: x86_64-pc-windows-msvc
-            flags: --features="native-tls http3"
+            flags: --features=native-tls
             rustflags: -C target-feature=+crt-static
             test: true
           - os: windows-11-arm
             target: aarch64-pc-windows-msvc
-            flags: --features="native-tls http3"
+            flags: --features=native-tls
             rustflags: -C target-feature=+crt-static
             test: true
 
@@ -86,7 +86,7 @@ jobs:
       - name: Install test
         if: matrix.test
         run: |-
-          uv pip install --system --no-index -f xh/dist/ xh-bin
+          pip install --no-index -f xh/dist/ xh-bin
           which xh
           xh --version
 
