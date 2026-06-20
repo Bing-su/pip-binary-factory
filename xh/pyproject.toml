@@ -1,12 +1,11 @@
 [project]
 name = "xh-bin"
-version = "0.25.3"
 description = "Friendly and fast tool for sending HTTP requests"
 readme = "README.md"
 requires-python = ">=3.7"
 license = { text = "MIT" }
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
-keywords = ["api-testing", "cli", "http-client"]
+keywords = ["api-testing", "cli", "http", "http-client"]
 classifiers = [
   "Programming Language :: Rust",
   "Topic :: Internet :: WWW/HTTP",
@@ -14,13 +13,14 @@ classifiers = [
   "Topic :: Utilities",
 ]
 dependencies = []
+dynamic = ["version"]
 
 [project.urls]
 repository = "https://github.com/Bing-su/pip-binary-factory"
 xh = "https://github.com/ducaale/xh"
 
 [build-system]
-requires = ["maturin>=1.10,<2.0"]
+requires = ["maturin>=1.14,<2.0"]
 build-backend = "maturin"
 
 [tool.maturin]

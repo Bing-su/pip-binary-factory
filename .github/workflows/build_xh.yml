@@ -16,50 +16,42 @@ jobs:
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-musl
-            flags: --features="native-tls reqwest/native-tls-vendored" --zig
+            flags: --features="native-tls reqwest/native-tls-vendored http3" --zig
             tag: manylinux_2_28_x86_64.musllinux_1_2_x86_64
-            rustflags: -C split-debuginfo=packed -C lto -C embed-bitcode=yes -C codegen-units=1
             test: true
           - os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-musl
-            flags: --features="native-tls reqwest/native-tls-vendored" --zig
+            flags: --features="native-tls reqwest/native-tls-vendored http3" --zig
             tag: manylinux_2_28_aarch64.musllinux_1_2_aarch64
-            rustflags: -C split-debuginfo=packed -C lto -C embed-bitcode=yes -C codegen-units=1
             test: true
-          - os: ubuntu-latest
+          - os: ubuntu-24.04-riscv
             target: riscv64gc-unknown-linux-musl
-            flags: --features="native-tls reqwest/native-tls-vendored" --zig
+            flags: --features="native-tls reqwest/native-tls-vendored http3" --zig
             tag: manylinux_2_31_riscv64.musllinux_1_2_riscv64
-            rustflags: -C lto -C embed-bitcode=yes -C codegen-units=1
-            test: false
+            test: true
           - os: macos-latest
             target: x86_64-apple-darwin
-            flags: --features=native-tls
-            rustflags: -C split-debuginfo=packed -C lto -C embed-bitcode=yes -C codegen-units=1
+            flags: --features="native-tls http3"
             test: false
           - os: macos-latest
             target: aarch64-apple-darwin
-            flags: --features=native-tls
-            rustflags: -C split-debuginfo=packed -C lto -C embed-bitcode=yes -C codegen-units=1
+            flags: --features="native-tls http3"
             test: true
           - os: windows-latest
             target: x86_64-pc-windows-msvc
-            flags: --features=native-tls
-            rustflags: -C target-feature=+crt-static -C split-debuginfo=packed -C lto -C embed-bitcode=yes -C codegen-units=1
+            flags: --features="native-tls http3"
+            rustflags: -C target-feature=+crt-static
             test: true
           - os: windows-11-arm
             target: aarch64-pc-windows-msvc
-            flags: --features=native-tls
-            rustflags: -C target-feature=+crt-static -C split-debuginfo=packed -C codegen-units=1
+            flags: --features="native-tls http3"
+            rustflags: -C target-feature=+crt-static
             test: true
 
     steps:
       - uses: hustcer/setup-nu@v3
       - uses: actions/checkout@v6
       - run: git submodule update --init -- xh/xh
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.x"
       - uses: astral-sh/setup-uv@v8.2.0
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -67,8 +59,7 @@ jobs:
 
       - name: Set RUSTFLAGS env variable
         if: matrix.rustflags
-        shell: bash
-        run: echo "RUSTFLAGS=${{ matrix.rustflags }}" >> $GITHUB_ENV
+        run: echo "RUSTFLAGS=${{ matrix.rustflags }}\n" | save -a $env.GITHUB_ENV
 
       - uses: PyO3/maturin-action@v1
         with:
@@ -77,6 +68,10 @@ jobs:
           target: ${{ matrix.target }}
           manylinux: musllinux_1_2
           working-directory: ./xh
+        env:
+          CARGO_PROFILE_RELEASE_LTO: true
+          CARGO_PROFILE_RELEASE_SPLIT_DEBUGINFO: "packed"
+          CARGO_PROFILE_RELEASE_CODEGEN_UNITS: 1
 
       - name: Post Processing wheel
         if: matrix.tag
@@ -91,7 +86,7 @@ jobs:
       - name: Install test
         if: matrix.test
         run: |-
-          pip install --no-index -f xh/dist/ xh-bin
+          uv pip install --system --no-index -f xh/dist/ xh-bin
           which xh
           xh --version
 
