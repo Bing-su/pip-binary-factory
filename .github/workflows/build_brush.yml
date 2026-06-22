@@ -48,7 +48,7 @@ jobs:
 
     steps:
       - uses: hustcer/setup-nu@v3
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - run: git submodule update --init -- brush/brush
       - uses: actions/setup-python@v6
         with:
@@ -99,7 +99,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - run: git submodule update --init -- brush/brush
       - uses: astral-sh/setup-uv@v8.2.0
 
