@@ -53,7 +53,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.x"
-      - uses: astral-sh/setup-uv@v8.3.0
+      - uses: astral-sh/setup-uv@v8.3.2
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.target }}
@@ -101,7 +101,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - run: git submodule update --init -- brush/brush
-      - uses: astral-sh/setup-uv@v8.3.0
+      - uses: astral-sh/setup-uv@v8.3.2
 
       - run: uv build --sdist
         working-directory: ./brush
