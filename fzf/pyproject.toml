@@ -1,10 +1,10 @@
 [project]
 name = "fzf-bin"
-version = "0.74.0"
+version = "0.74.1"
 description = "fzf - 🌸 A command-line fuzzy finder"
 readme = "README.md"
 requires-python = ">=3.7"
-license = { text = "MIT" }
+license = "MIT"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 keywords = ["fuzzy finder", "fzf", "tui"]
 classifiers = [
