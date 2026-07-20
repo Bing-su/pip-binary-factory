@@ -12,10 +12,10 @@ jobs:
       - uses: actions/checkout@v7
       - run: git submodule update --init -- lazygit/lazygit
       - uses: astral-sh/setup-uv@v8.3.2
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.x"
-      - uses: actions/setup-go@v6
+      - uses: actions/setup-go@v7
         with:
           go-version: "stable"
 
