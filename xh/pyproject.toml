@@ -3,7 +3,6 @@ name = "xh-bin"
 description = "Friendly and fast tool for sending HTTP requests"
 readme = "README.md"
 requires-python = ">=3.7"
-license = { text = "MIT" }
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 keywords = ["api-testing", "cli", "http", "http-client"]
 classifiers = [
@@ -13,7 +12,7 @@ classifiers = [
   "Topic :: Utilities",
 ]
 dependencies = []
-dynamic = ["version"]
+dynamic = ["license", "version"]
 
 [project.urls]
 repository = "https://github.com/Bing-su/pip-binary-factory"
