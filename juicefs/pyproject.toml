@@ -1,10 +1,10 @@
 [project]
 name = "juicefs-bin"
-version = "1.4.0"
+version = "1.4.1"
 description = "🍹JuiceFS is a distributed POSIX file system built on top of Redis and S3."
 readme = "README.md"
 requires-python = ">=3.7"
-license = { text = "Apache 2.0" }
+license = "Apache-2.0"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 keywords = [
   "distributed file system",
