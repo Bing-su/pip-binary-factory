@@ -7,7 +7,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import TYPE_CHECKING
 
-import requests
+import httpx2
 from wheel._commands.tags import tags
 
 if TYPE_CHECKING:
@@ -68,7 +68,7 @@ def get_platform():
 
 
 def download(build_dir: Path) -> None:
-    info = requests.get(ZIG_VERSION_INFO_URL).json()[VERSION]
+    info = httpx2.get(ZIG_VERSION_INFO_URL).json()[VERSION]
     platform = get_platform()
     if platform not in info:
         message = f"Unsupported platform: {platform}"
@@ -78,10 +78,11 @@ def download(build_dir: Path) -> None:
 
     with TemporaryDirectory() as tmp:
         tarball = Path(tmp).joinpath(Path(tarball_url).name)
-        with requests.get(tarball_url, stream=True) as r:
+        with httpx2.stream("GET", tarball_url) as r:
             r.raise_for_status()
             with tarball.open("wb") as f:
-                shutil.copyfileobj(r.raw, f)
+                for chunk in r.iter_bytes():
+                    f.write(chunk)
         shutil.unpack_archive(tarball, tmp)
 
         lib = next(p for p in Path(tmp).rglob("lib") if p.is_dir())
@@ -121,4 +122,4 @@ def pdm_build_finalize(context: Context, artifact: Path) -> None:
     print(renamed)
 
     if context.build_dir.exists():
-        shutil.rmtree(context.build_dir)
+        shutil.rmtree(context.build_dir, ignore_errors=True)

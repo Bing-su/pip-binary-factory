@@ -4,7 +4,7 @@ version = "0.16.0"
 description = "Zig is a general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software."
 readme = "README.md"
 requires-python = ">=3.7"
-license = { text = "MIT" }
+license = "MIT"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 keywords = ["zig"]
 classifiers = [
@@ -17,7 +17,7 @@ repository = "https://github.com/Bing-su/pip-binary-factory"
 ziglang = "https://ziglang.org"
 
 [build-system]
-requires = ["pdm-backend", "requests", "wheel"]
+requires = ["httpx2", "pdm-backend", "wheel"]
 build-backend = "pdm.backend"
 
 [tool.pdm.build]
