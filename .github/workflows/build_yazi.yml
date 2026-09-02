@@ -41,11 +41,11 @@ jobs:
             test: false
             post-command: uvx wheel tags --remove --platform-tag manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_2_aarch64 dist/*.whl
 
-          - os: ubuntu-latest
-            target: aarch64-linux-android
-            test: false
-            # https://github.com/cross-rs/cross/blob/main/docker/Dockerfile.aarch64-linux-android
-            post-command: uvx wheel tags --remove --platform-tag android_28_arm64_v8a dist/*.whl
+          # - os: ubuntu-latest
+          #   target: aarch64-linux-android
+          #   test: false
+          #   # https://github.com/cross-rs/cross/blob/main/docker/Dockerfile.aarch64-linux-android
+          #   post-command: uvx wheel tags --remove --platform-tag android_28_arm64_v8a dist/*.whl
 
           - os: macos-latest
             target: x86_64-apple-darwin
@@ -110,7 +110,6 @@ jobs:
           ya --version
 
           ya pkg list
-          yazi --debug
 
       - uses: actions/upload-artifact@v7
         with:
