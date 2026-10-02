@@ -1,6 +1,6 @@
 [project]
 name = "go-task-bin"
-version = "3.53.1"
+version = "3.54.0"
 description = "A fast, cross-platform build tool inspired by Make, designed for modern workflows."
 readme = "README.md"
 requires-python = ">=3.7"
