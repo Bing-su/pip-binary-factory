@@ -7,8 +7,6 @@ import sys
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from wheel.cli.tags import tags
-
 if TYPE_CHECKING:
     from pdm.backend.hooks import Context
 
