@@ -36,12 +36,11 @@ jobs:
           - os: ubuntu-latest
             post-command: uvx wheel tags --remove --platform-tag manylinux_2_17_x86_64.manylinux2014_x86_64.musllinux_1_1_x86_64 dist/*.whl
 
-          - os: ubuntu-24.04-arm
+          - os: ubuntu-26.04-arm
             post-command: uvx wheel tags --remove --platform-tag manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64 dist/*.whl
 
-          - os: macos-15-intel
-            post-command: uvx wheel tags --remove --platform-tag macosx_13_0_x86_64 dist/*.whl
-
+          - os: ubuntu-24.04-riscv
+            post-command: uvx wheel tags --remove --platform-tag manylinux_2_31_riscv64.musllinux_1_1_riscv64 dist/*.whl
           - os: macos-latest
             post-command: uvx wheel tags --remove --platform-tag macosx_13_0_arm64 dist/*.whl
 
