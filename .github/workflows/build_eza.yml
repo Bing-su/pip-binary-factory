@@ -47,18 +47,19 @@ jobs:
             test: true
 
     steps:
-      - uses: hustcer/setup-nu@v3
+      - uses: hustcer/setup-nu@95cd3bfe252450ef7d35dd9a7ddecf3484341134 # v3.28
       - uses: actions/checkout@v7
       - run: git submodule update --init -- eza/eza
       - uses: actions/setup-python@v7
         with:
           python-version: "3.x"
-      - uses: astral-sh/setup-uv@v10.3.0
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec # stable
         with:
+          toolchain: stable
           targets: ${{ matrix.target }}
 
-      - uses: PyO3/maturin-action@v1
+      - uses: PyO3/maturin-action@e83996d129638aa358a18fbd1dfb82f0b0fb5d3b # v1.51.0
         with:
           command: build
           args: --release --out dist ${{ matrix.flags }}
@@ -103,7 +104,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - run: git submodule update --init -- eza/eza
-      - uses: astral-sh/setup-uv@v10.3.0
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
 
       - run: uv build --sdist
         working-directory: ./eza
@@ -139,7 +140,7 @@ jobs:
       - run: ls dist
 
       - name: Publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
         with:
           packages-dir: dist
           skip-existing: true
