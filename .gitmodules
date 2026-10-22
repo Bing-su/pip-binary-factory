@@ -40,3 +40,6 @@
 [submodule "ripgrep/ripgrep"]
 	path = ripgrep/ripgrep
 	url = https://github.com/burntsushi/ripgrep
+[submodule "eza/eza"]
+	path = eza/eza
+	url = https://github.com/eza-community/eza

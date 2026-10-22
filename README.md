@@ -21,6 +21,7 @@ binary package with pip install
 | jaq-bin         | https://github.com/01mf02/jaq                                      | [![GitHub version](https://badge.fury.io/gh/01mf02%2Fjaq.svg)](https://badge.fury.io/gh/01mf02%2Fjaq)                       | [![PyPI version](https://badge.fury.io/py/jaq-bin.svg)](https://badge.fury.io/py/jaq-bin)                 |
 | brush-bin       | https://github.com/reubeno/brush                                   | ![Crates.io Version](https://img.shields.io/crates/v/brush)                                                                 | [![PyPI version](https://badge.fury.io/py/brush-bin.svg)](https://badge.fury.io/py/brush-bin)             |
 | ripgrep-bin     | https://github.com/BurntSushi/ripgrep                              | [![GitHub version](https://badge.fury.io/gh/burntsushi%2Fripgrep.svg)](https://badge.fury.io/gh/burntsushi%2Fripgrep)       | [![PyPI version](https://badge.fury.io/py/ripgrep-bin.svg)](https://badge.fury.io/py/ripgrep-bin)         |
+| eza-bin         | https://github.com/eza-community/eza                               | [![GitHub version](https://badge.fury.io/gh/eza-community%2Feza.svg)](https://badge.fury.io/gh/eza-community%2Feza)         | [![PyPI version](https://badge.fury.io/py/eza-bin.svg)](https://badge.fury.io/py/eza-bin)                 |
 
 ## pipx, uv
 
@@ -45,5 +46,6 @@ To install the packages listed above using pipx or uv, you can use the following
 | jaq-bin         | `pipx install jaq-bin`         | `uv tool install jaq-bin`         | jaq         |
 | brush-bin       | `pipx install brush-bin`       | `uv tool install brush-bin`       | brush       |
 | ripgrep-bin     | `pipx install ripgrep-bin`     | `uv tool install ripgrep-bin`     | rg          |
+| eza-bin         | `pipx install eza-bin`         | `uv tool install eza-bin`         | eza         |
 
 Please note that you need to have pipx or uv installed on your system before running these commands.
