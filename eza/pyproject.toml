@@ -4,7 +4,7 @@ description = "A modern alternative to ls"
 readme = "README.md"
 requires-python = ">=3.7"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
-keywords = ["cli", "eza", "exa", "file-listing", "ls"]
+keywords = ["cli", "exa", "eza", "file-listing", "ls"]
 classifiers = [
   "Programming Language :: Rust",
   "Topic :: System :: Filesystems",
@@ -19,13 +19,13 @@ eza = "https://github.com/eza-community/eza"
 repository = "https://github.com/Bing-su/pip-binary-factory"
 
 [build-system]
-requires = ["maturin>=1.14,<2.0"]
+requires = ["maturin>=1.15,<2.0"]
 build-backend = "maturin"
 
 [tool.maturin]
 auditwheel = "repair"
 bindings = "bin"
-features = ["vendored-libgit2"]
+features = ["vendored-libgit2", "vendored-openssl"]
 include = [
   { format = "sdist", path = "LICENSE" },
   { format = "sdist", path = "LICENSE-MIT" },
@@ -33,27 +33,3 @@ include = [
 manifest-path = "eza/Cargo.toml"
 profile = "release"
 strip = true
-
-[tool.ruff.lint]
-select = [
-  "A",
-  "B",
-  "C4",
-  "C90",
-  "E",
-  "EM",
-  "F",
-  "FA",
-  "I001",
-  "ISC",
-  "N",
-  "PIE",
-  "PT",
-  "RET",
-  "RUF",
-  "SIM",
-  "UP",
-  "W",
-]
-ignore = ["B008", "B905", "E501"]
-unfixable = ["F401"]
