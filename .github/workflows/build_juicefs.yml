@@ -38,7 +38,7 @@ jobs:
             post-command: uvx wheel tags --remove --platform-tag manylinux_2_17_x86_64.manylinux2014_x86_64.musllinux_1_2_x86_64 dist/*.whl
             cc: musl-gcc
 
-          - os: ubuntu-24.04-arm
+          - os: ubuntu-26.04-arm
             post-command: uvx wheel tags --remove --platform-tag manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_2_aarch64 dist/*.whl
             cc: musl-gcc
 

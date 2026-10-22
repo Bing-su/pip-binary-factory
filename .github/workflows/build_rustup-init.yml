@@ -22,11 +22,11 @@ jobs:
             target: x86_64-unknown-linux-musl
             flags: "--features=vendored-openssl --zig"
             rustflags: -C split-debuginfo=packed
-          - os: ubuntu-24.04-arm
+          - os: ubuntu-26.04-arm
             target: aarch64-unknown-linux-gnu
             flags: "--features=vendored-openssl --zig"
             rustflags: -C split-debuginfo=packed
-          - os: ubuntu-24.04-arm
+          - os: ubuntu-26.04-arm
             target: aarch64-unknown-linux-musl
             flags: "--features=vendored-openssl --zig"
             rustflags: -C split-debuginfo=packed
