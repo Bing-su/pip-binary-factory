@@ -98,8 +98,12 @@ func main() {
 		Dir:          migrationsDir,
 	})
 
-	// GitHub selfupdate
-	// ghupdate.MustRegister(app, app.RootCmd, ghupdate.Config{})
+	// update command
+	// update.MustRegister(app, app.RootCmd, update.Config{
+	// 	BaseURL:    "https://ganigeorgiev.com",
+	// 	Project:    "pocketbase",
+	// 	Repository: "pocketbase",
+	// })
 
 	// static route to serves files from the provided public dir
 	// (if publicDir exists and the route path is not already defined)
