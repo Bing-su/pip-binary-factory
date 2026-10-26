@@ -1,6 +1,6 @@
 [project]
 name = "juicefs-bin"
-version = "1.4.1"
+version = "1.4.2"
 description = "🍹JuiceFS is a distributed POSIX file system built on top of Redis and S3."
 readme = "README.md"
 requires-python = ">=3.7"
