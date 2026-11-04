@@ -1,10 +1,10 @@
 [project]
 name = "caddyserver-bin"
-version = "2.11.7"
+version = "2.11.8"
 description = "Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS "
 readme = "README.md"
 requires-python = ">=3.7"
-license.text = "Apache-2.0"
+license = "Apache-2.0"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
 keywords = ["caddy", "http", "http3", "https", "web server"]
 classifiers = [
