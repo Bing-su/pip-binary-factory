@@ -2,7 +2,7 @@ module act
 
 go 1.27
 
-require github.com/nektos/act v0.2.96
+require github.com/nektos/act v0.2.97
 
 require (
 	cyphar.com/go-pathrs v0.2.1 // indirect
