@@ -3,11 +3,7 @@ name = "brush-bin"
 readme = "README.md"
 requires-python = ">=3.7"
 authors = [{ name = "dowon", email = "ks2515@naver.com" }]
-classifiers = [
-  "Programming Language :: Rust",
-  "Topic :: System :: Shells",
-  "Topic :: Terminals"
-]
+classifiers = ["Programming Language :: Rust", "Topic :: System :: Shells", "Topic :: Terminals"]
 dependencies = []
 dynamic = ["description", "keywords", "license", "version"]
 
@@ -16,7 +12,7 @@ brush = "https://github.com/reubeno/brush"
 repository = "https://github.com/Bing-su/pip-binary-factory"
 
 [build-system]
-requires = ["maturin>=1.13,<2.0"]
+requires = ["maturin>=1.15,<2.0"]
 build-backend = "maturin"
 
 [tool.maturin]
